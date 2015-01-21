@@ -14,45 +14,53 @@
               <fieldset>
                   <legend>Registro</legend>
                   <!--Nombre-->
+                  
                   <div class="form-group">
-                     {{Form::label('username', 'Usuario')}}
-                      
-                          {{Form::text('username')}}
-                           
-                    
+                     {{Form::label('username', 'Usuario',array('class' => 'col-lg-2 control-label'))}}
+                   <div class="col-lg-10">   
+                          {{Form::text('username')}}                           
+                 </div>   
                   </div>
 				  
 				  <!--Apellido-->
-				  <div class="form-group">
-                      {{Form::label('apellido', 'Apellido')}}
-                      
+				  
+                  <div class="form-group">
+                      {{Form::label('apellido', 'Apellido', array('class' => 'col-lg-2 control-label'))}}
+                  <div class="col-lg-10">    
                          {{Form::text('apellido')}}
                            
-                    
+                 </div>   
                   </div>
                                    
                 <!--Mail-->
-                  
-                <div class="form-group">
-                    {{Form::label('email', 'E-mail')}}
-                      
+                 
+                
+                  <div class="form-group">
+                    {{Form::label('email', 'E-mail',array('class' => 'col-lg-2 control-label'))}}
+                      <div class="col-lg-10">
                           {{Form::text('email')}}
                 </div>
+                </div>
                 <!-- Contraseña -->
-                <div class="form-group">
-    				{{Form::label('password', 'Contraseña')}}
-                      
+                
+               
+              <div class="form-group">
+    				{{Form::label('password', 'Contraseña', array('class' => 'col-lg-2 control-label'))}}
+                      <div class="col-lg-10">
                           {{Form::password('password')}}
   				</div>
+          </div>
   				<!--confirmacion password-->
-  				<div class="form-group">
-                   {{Form::label('verificacion', 'Repita la Contraseña')}}
-                      
+                  <div class="form-group">
+                   {{Form::label('verificacion', 'Repita la Contraseña', array('class' => 'col-lg-2 control-label'))}}
+                      <div class="col-lg-10">
                           {{Form::password('verificacion')}}
  			    </div>
+          </div>
                 <!--Fecha de Nacimiento-->                  
 
-				<div class="form-group">
+				
+                  <div class="form-group">
                     <label for="inputFecha" class="col-lg-2 control-label">Fecha de Nacimiento</label>
                     <div class="col-lg-5">
                         <input class="form-control" id="dateFecha" type="date" name="nacimiento" >
@@ -60,7 +68,9 @@
                 </div>
                
                   <!--Sexo-->
-                <div class="form-group">
+                
+                  <div class="form-group">
+                  <div class="col-lg-10">
            {{Form::label('sexo', 'Femenino')}}
                       
                           {{Form::radio('sexo', 'femenino', 'selected')}}
@@ -69,9 +79,12 @@
                       
                           {{Form::radio('sexo', 'masculino')}}
         </div>
+        </div>
                  <!--Provincias-->
-                <div class="form-group">
+                  <div class="form-group">
+                   <div class="col-lg-10">
                     <label for="selectProvincia" class="col-lg-2 control-label">Provincia</label>
+
                     <div class="col-lg-5">
                         <select class="form-control" id="selectProvincia" name="provincias">
                             <option value="Buenos Aires">Buenos Aires</option>
@@ -99,16 +112,21 @@
                             <option value="Tierra del Fuego">Tierra del Fuego</option>
                             <option value="Tucumán">Tucumán</option>
                        </select>
-                    </div>     
+                  </div>     
+                </div>
                 </div>
                 <!--Ciudad--> 
-                <div class="form-group">
-                   {{Form::label('ciudad', 'Ciudad')}}
+                
+                  <div class="form-group">
+                  <div class="col-lg-10">
+                   {{Form::label('ciudad', 'Ciudad', array('class' => 'col-lg-2 control-label'))}}
                       
                           {{Form::text('ciudad')}}
                 </div>
+                </div>
                 <!--Textarea-->
-                <div class="form-group">
+                <div class="col-lg-10">
+                  <div class="form-group">
                     <label for="textArea" class="col-lg-2 control-label">Terminos y Condiciones </br></label>
                     <div class="col-lg-5">
                       <textarea class="form-control " rows="5" id="textArea" disabled="disabled">TERMINOS Y CONDICIONES
@@ -117,8 +135,10 @@ La utilización de nuestro sitio implica su aceptación plena y sinreservas a to
                       </textarea>             
                     </div>
                </div>
+               </div>
                <!--CheckBox-->
-              <div class="form-group">
+              <div class="col-lg-10">
+                  <div class="form-group">
                
                   {{Form::checkbox('terms', 'true')}}
                   {{Form::label('Acepto terminos y condiciones')}}
@@ -126,9 +146,12 @@ La utilización de nuestro sitio implica su aceptación plena y sinreservas a to
                           
                
                </div>
+               </div>
                <!--Boton-->
-                <div class="form-group">
+                <div class="col-lg-10">
+                  <div class="form-group">
                   {{Form::submit('Aceptar')}}
+                </div>
                 </div>
             </fieldset>
           {{Form::close()}}
