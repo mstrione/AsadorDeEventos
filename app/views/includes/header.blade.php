@@ -6,7 +6,7 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><a href="/">Inicio</a></li>
-              <li><a href="/about">¿Que es Meating?</a></li>
+              <li><a href="/about">¿Que es Asador de Eventos?</a></li>
               <li><a href="/aboutUs">¿Quienes somos?</a></li> 
               <li><a href="/contacto">Contacto</a></li>           
             </ul>

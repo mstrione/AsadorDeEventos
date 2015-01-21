@@ -87,12 +87,12 @@
 					<div class="col-sm-6 col-md-8">
 						<h3>Javier Morabes</h3>
 						<blockquote class="pull.left"> <!Este Blackquote me ordena el texto hacia la izquierda, dandole un mejor formato ubicandolo dentro del recuadro sin irse de la pagina>
-						<p class="text-left">Descripcion de Javi</p>
+						<p class="text-left">Estudiante de 5° año de la carrera ingenieria en informatica en la universidad Fasta de San Carlos De Bariloche, Diseñador, programador y analista en el proyecto Asador de Eventos</p>
 						</blockquote>
 						<small><cite title="Bariloche, Arg">Bariloche, ARG <i class="glyphicon glyphicon-map-marker">
 						</i></cite></small>
 						<p>
-                        <i class="glyphicon glyphicon-envelope"></i>@hotmail.com
+                        <i class="glyphicon glyphicon-envelope"></i>javiermorabes@hotmail.com
                         <br />
                         <i class="glyphicon glyphicon-globe"></i><a href="http://www.google.com">www.google.com</a>
                         <br />

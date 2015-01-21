@@ -1,13 +1,13 @@
 <html>
-
+@extends('layouts.default')
 <head>
-	@include('includes.headR')
+@include('includes.head')
 </head>
 @section('content')
 	
 <body>	
 	<div class="container" > 
-    	<div class="well">'/registro'
+    	<div class="well">
 			<!--{{Form::open()}}-->
 {{Form::open(array('method'=>'POST','url'=>'/registro','role'=>'form'))}} 
 
@@ -133,7 +133,6 @@ La utilización de nuestro sitio implica su aceptación plena y sinreservas a to
             </fieldset>
           {{Form::close()}}
         </div>
-        
 	</div>
       <!-- Bootstrap core JavaScript
     ================================================== -->
