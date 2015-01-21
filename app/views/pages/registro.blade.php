@@ -17,6 +17,7 @@
                   <div class="form-group">
                      {{Form::label('username', 'Usuario')}}
                       
+                      
                           {{Form::text('username')}}
                            
                     
