@@ -40,7 +40,7 @@ class registroController extends BaseController {
             'unique' => 'El email ingresado ya existe en la base de datos'
         );
 			
-			$validator = Validator::make ($input, $rules,$messages); 
+			$validator = Validator::make ($input, $rules, $messages); 
 			
 			if ($validator->fails())
 			{
@@ -54,12 +54,12 @@ class registroController extends BaseController {
 				$Usuario->username = Input::get('username');
 				$Usuario->apellido =Input::get('apellido');
 				$Usuario->ciudad = Input::get('ciudad');
-				$Usuario->email = Input::get('email');;
+				$Usuario->email = Input::get('email');
 				$Usario->nacimiento = Input::get('nacimiento');
 				$Usuario->password = Input::get('password');
 				$Usuario->provincia = Input::get('provincia');
-				$Usuario->sexo = Input::get('sexo');;
-				$Usuario->verificacion = Input::get('verificacion');;
+				$Usuario->sexo = Input::get('sexo');
+				$Usuario->verificacion = Input::get('verificacion');
 				$Usuario->save();
 			return Redirect::to('/registro')->with('registro', 'Registro completado. Accede a su cuenta');
 			

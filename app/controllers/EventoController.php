@@ -2,7 +2,7 @@
 
 class EventoController extends \BaseController {
 
-	 
+	  
 	 public function get_crearEvento()
 	{
 		return View::make('pages.crearEvento');
@@ -22,7 +22,8 @@ class EventoController extends \BaseController {
 			$NEvento -> metodocuenta=Input::get('menoresmax');
 			$NEvento -> creador=Input::get('nombre');
 			$NEvento-> save();
-			return View::make('eventos.MisEventos');
+			//return View::make('eventos.MisEventos');
+			return Redirect::action('MisEventosController@index');
 
 		}
 		else

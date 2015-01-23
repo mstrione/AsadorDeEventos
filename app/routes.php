@@ -117,7 +117,7 @@ Route::get('crearEvento', 'EventoController@get_crearEvento');
 Route::Post('/MisEventos','EventoController@get_EventoX');
  
 Route::post('crearEvento', 'EventoController@get_EventoX');
-
+  
 
 
 
