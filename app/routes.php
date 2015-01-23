@@ -1,19 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
-
-
-
-
 // Deberiamos tener...
 /* 1 ruta para la pagina principal
 2 rutas para la pagina de contacto(una que muestra el formulario y otra que lo procesa-Get y Post)
@@ -30,8 +16,6 @@ Route::get('/about', 'HomeController@showAbout');
 //contacto
 Route::get('/contacto', 'HomeController@get_contacto');
 Route::post('/contacto', 'HomeController@post_contacto');
-
-
 
 //RUTA USUARIOS********************************************
 Route::get(Lang::get('routes.login'), 'UsuarioController@get_login');
@@ -54,15 +38,8 @@ Route::post('/itempop', 'ItemController@delete_item');*/
 Route::get('/upload', 'FotoController@get_foto');
 Route::post('/upload', 'FotoController@post_foto');
 
-
-
-
-
-
-
 //RUTA DE LA PAGINA DEL INICIO DE SESION
 //ESTO HAY QUE ARREGLAR---->
-
 
 /*
 // Nos mostrará el formulario de login.
@@ -82,42 +59,19 @@ Route::group(array('before' => 'auth'), function()
     // Esta ruta nos servirá para cerrar sesión.
     Route::get('logout', 'AuthController@logOut');
 });*/  //<------------- ME RETORNA LOS ERRORES PERO NO ENTRA A LA SESION!!!!!!! VER PORQUE..
- 
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
 
 Route::get('agregarinvitado', function()
 {
 	return View::make('pages.agregarinvitado');
 });
 
-
 //***************************************
 //RUTA DE CREAR EVENTO
-
 
 /*Route::get('crearEvento', function()
 {
 	return View::make('pages.crearEvento');
 });*/
 Route::get('crearEvento', 'EventoController@get_crearEvento');
-Route::Post('/MisEventos','EventoController@get_EventoX');
- 
 Route::post('crearEvento', 'EventoController@get_EventoX');
-  
-
-
-
+Route::Post('/MisEventos','EventoController@get_EventoX'); 

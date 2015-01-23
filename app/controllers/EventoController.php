@@ -1,16 +1,18 @@
 <?php
 
-class EventoController extends \BaseController {
+class EventoController extends BaseController {
 
 	  
 	 public function get_crearEvento()
 	{
 		return View::make('pages.crearEvento');
 	}
+
 	public function get_EventoX()
 	{
 		if ($_POST)
-		{	$NEvento= new Evento;
+		{	
+			$NEvento= new Evento;
 			$NEvento -> nombre=Input::get('nombre');
 			$NEvento -> fecha=Input::get('Fecha');
 			$NEvento -> hora=Input::get('hora');
@@ -24,14 +26,12 @@ class EventoController extends \BaseController {
 			$NEvento-> save();
 			//return View::make('eventos.MisEventos');
 			return Redirect::action('MisEventosController@index');
-
 		}
 		else
 		{
 			return View::make('pages.crearEvento');
 		}
 	}
-	
 	
 	public function post_crearEvento()
 	{
@@ -45,45 +45,31 @@ class EventoController extends \BaseController {
 			'descripcion'=>'required',
 			'adultosmax'=>'required'|'numeric',
 			'menoresmax'=>'required'|'numeric',
+		);
 			
+		$validator = Validator::make ($input, $rules); 
+		
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)-> with('estado', 'Revise los datos ingresados') ;
 			
-			
-			);
-			
-			$validator = Validator::make ($input, $rules); 
-			
-			if ($validator->fails())
-			{
-				return Redirect::back()->withErrors($validator)-> with('estado', 'Revise los datos ingresados') ;
-				
-			}
-			else
-			{ 
-			
-				$Evento = new eventos;
-				$Evento->nombre = Input::get('username');
-				$Evento->direccion =Input::get('apellido');
-				$Evento->descripcion = Input::get('ciudad');
-				$Evento->fecha = Input::get('email');;
-				$Evento->hora = Input::get('nacimiento');
-				$Evento->adultosmax = Input::get('password');
-				$Evento->menoresmax = Input::get('provincia');
-				
-				$Evento->save();
-			return Redirect::to('/crearEvento')->with('crearEvento', 'Su evento ha sido creado');
-			
-					}
+		}
+		else
+		{ 
+		
+			$Evento = new eventos;
+			$Evento->nombre = Input::get('username');
+			$Evento->direccion =Input::get('apellido');
+			$Evento->descripcion = Input::get('ciudad');
+			$Evento->fecha = Input::get('email');;
+			$Evento->hora = Input::get('nacimiento');
+			$Evento->adultosmax = Input::get('password');
+			$Evento->menoresmax = Input::get('provincia');				
+			$Evento->save();
+			return Redirect::to('crearEvento')->with('crearEvento', 'Su evento ha sido creado');
+		}
 			
 	}
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
 	 
 	public function crearEvento()
 	{
