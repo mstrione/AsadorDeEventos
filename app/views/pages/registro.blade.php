@@ -12,24 +12,21 @@
 {{Form::open(array('method'=>'POST','url'=>'/registro','role'=>'form'))}} 
 
               <fieldset>
-                  <legend>Registro</legend>
-                  <!--Nombre-->
-                  
+                <legend>Registro</legend>
+                <!--Nombre-->
                   <div class="form-group">
-                     {{Form::label('username', 'Usuario',array('class' => 'col-lg-2 control-label'))}}
-                   <div class="col-lg-10">   
-                          {{Form::text('username')}}                           
-                 </div>   
+                    {{Form::label('username', 'Usuario',array('class' => 'col-lg-2 control-label'))}}
+                    <div class="col-lg-10">   
+                        {{Form::text('username')}}                           
+                    </div>   
                   </div>
-				  
-				  <!--Apellido-->
-				  
-                  <div class="form-group">
+			  
+			          <!--Apellido-->
+				          <div class="form-group">
                       {{Form::label('apellido', 'Apellido', array('class' => 'col-lg-2 control-label'))}}
-                  <div class="col-lg-10">    
+                    <div class="col-lg-10">    
                          {{Form::text('apellido')}}
-                           
-                 </div>   
+                    </div>   
                   </div>
                                    
                 <!--Mail-->

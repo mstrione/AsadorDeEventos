@@ -58,7 +58,6 @@ class registroController extends BaseController {
 				$Usuario -> password = Input::get('password');
 				$Usuario -> provincia = Input::get('provincias');
 				$Usuario -> sexo = Input::get('sexo');
-				//$Usuario->verificacion = Input::get('verificacion');
 				$Usuario->save();
 				return Redirect::action('UsuarioController@get_login');
 				//return Redirect::to('/registro')->with('registro', 'Registro completado. Accede a su cuenta');	

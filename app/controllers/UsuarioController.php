@@ -13,7 +13,7 @@ class UsuarioController extends BaseController {
 		return View::make('index')->with('usuarios',$usuarios); 
 		 //return 'Esta es la lista de usuarios';
 
-	}
+	} 
 
 
 	/**
@@ -88,11 +88,7 @@ class UsuarioController extends BaseController {
 	public function destroy($id)
 	{
 		//
-	}
-	
-	//--------------------------------------------------------------------------------------------
-	
-	
+	}	
 	
 	//--------------------------------------------PARTE DE LOS LOGUEOS----------------------------------------------------------
 	
@@ -126,13 +122,14 @@ class UsuarioController extends BaseController {
 		{
 			$username = Input::get('username');
 			$password = Input::get('password');
-			if($usuario = Usuario::where('username', '=', $username)->first())
+			$usuario = Usuario::where('username', '=', $username)->first();
+			if($usuario) 
 			{
-				if($password = Usuario::where('password', '=', $password)->first())
+				//if($password = Usuario::where('password', '=', $password)->first()) //esta mal porque le asigna a $password una fila que contenga una clave valida (culaquiera) y auroriza
+				if ($usuario->password == $password)
 				{
 					Session::put('usuario_id', $usuario->id);
-					Session::put('usuario_username', $usuario->username);
-					
+					Session::put('usuario_username', $usuario->username);					
 					return Redirect::to('/bienvenida');
 				}
 				else
