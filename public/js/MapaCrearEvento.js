@@ -16,7 +16,10 @@ function initialize() {
       mapOptions);
 
   // This event listener will call addMarker() when the map is clicked.
-  google.maps.event.addListener(map, 'click', function(event) { addMarker(event.latLng); });
+  google.maps.event.addListener(map, 'click', function(event) { 
+    addMarker(event.latLng); //crea el marcador en el mapa
+    alert(event.latLng); //muestra un alert con las cordenadas del marcador
+   });
 
   // Adds a marker at the center of the map.
   //addMarker(haightAshbury);
