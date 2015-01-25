@@ -128,6 +128,7 @@ class UsuarioController extends BaseController {
 				//if($password = Usuario::where('password', '=', $password)->first()) //esta mal porque le asigna a $password una fila que contenga una clave valida (culaquiera) y auroriza
 				if ($usuario->password == $password)
 				{
+					//mi sesión va a tener un usuario_id y un usuario_username , los valores se los asigna capturando los datos de la tupla $usuario
 					Session::put('usuario_id', $usuario->id);
 					Session::put('usuario_username', $usuario->username);					
 					return Redirect::to('/bienvenida');

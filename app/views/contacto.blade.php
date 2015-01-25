@@ -1,13 +1,15 @@
 @extends('layouts.default')
 <head>
-	@include('includes.headC')
+		
+		
+		
+@include('includes.headC')
+	
 </head>
 @section('content')
 {{Form::open(array('method' => 'POST', 'url' => '/contacto', 'role' => 'form'))}}
 
-	@if(Session::has('estado'))
-		<h3>{{Session::get('estado')}}</h3></br>
-	@endif
+
 
 	<div class="form-group">
 		{{Form::label('Nombre')}}
