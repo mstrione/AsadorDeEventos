@@ -1,5 +1,5 @@
 <?php
-
+ 
 class EventoController extends BaseController {
 
 	  
@@ -22,7 +22,7 @@ class EventoController extends BaseController {
 			$NEvento -> adultosmax=Input::get('adultosmax');
 			$NEvento -> menoresmax=Input::get('menoresmax');
 			$NEvento -> metodocuenta=Input::get('menoresmax');
-			$NEvento -> creador=Input::get('nombre');
+			$NEvento -> creador=Session::get('usuario_id');
 			$NEvento-> save();
 			//return View::make('eventos.MisEventos');
 			return Redirect::action('MisEventosController@index');

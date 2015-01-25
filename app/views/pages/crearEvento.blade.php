@@ -9,31 +9,26 @@
 	{{ HTML::style('css/EstiloMapa.css') }}
 	
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-
- <script >google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+	<script >google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
 </head>
-@section('content')
-<div class="page-header">
-    <div class="container" id="page">
-    <h1>CREAR EVENTO</h1>
-    </div>    
-</div>
-<div class="jumbotron">
-{{Form::open(array('method'=>'POST','Action'=> '/MisEventos' ,'role'=>'form','class'=>'form-horizontal'))}}
-<fieldset>
-			
-			
+	@section('content')
+		<div class="page-header">
+		    <div class="container" id="page">
+		    	<h1>CREAR EVENTO</h1>
+		    </div>    
+		</div>
+		<div class="jumbotron">
+			{{Form::open(array('method'=>'POST','Action'=> '/MisEventos' ,'role'=>'form','class'=>'form-horizontal'))}}
+			<fieldset>
 			<div class "row">
 				<div class="form-group" >
-						{{Form::label('Nombre','',array('class'=>'col-lg-1 control-label'))}}
-						<div class="col-lg-10">
+					{{Form::label('Nombre','',array('class'=>'col-lg-1 control-label'))}}
+					<div class="col-lg-10">
 						{{Form::text('nombre','',array('class'=>'form-control'))}} 
-						</div>
+					</div>
 				</div>
-			</div>
-	
-	
+			</div>	
 			<!--FECHA Y HORA-->
 			
           
