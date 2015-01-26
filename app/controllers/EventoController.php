@@ -16,6 +16,7 @@ class EventoController extends BaseController {
 			$NEvento -> nombre=Input::get('nombre');
 			$NEvento -> fecha=Input::get('Fecha');
 			$NEvento -> hora=Input::get('hora');
+			$NEvento -> direccion=Input::get('direccion');
 			$NEvento -> descripcion=Input::get('descripcion');
 			$NEvento -> latitud=Input::get('nombre');
 			$NEvento -> longitud=Input::get('nombre');

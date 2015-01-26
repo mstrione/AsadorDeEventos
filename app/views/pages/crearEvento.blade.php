@@ -9,7 +9,7 @@
 	{{ HTML::style('css/EstiloMapa.css') }}
 	
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-	<script >google.maps.event.addDomListener(window, 'load', initialize);
+	<script >google.maps.event.addDomListener(window, 'load', initialize);	
 	</script>
 </head>
 	@section('content')
@@ -105,7 +105,8 @@
     </div>
     <div id="map-canvas"></div>
     <p>click en el mapa para agregar marcadores.</p>
-			</dic>
+			</div>
+
 			
 			
 			<div class="form-group" class="col-lg-4 col-lg-offset-2">
