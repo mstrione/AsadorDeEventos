@@ -18,7 +18,8 @@ class Fotos extends Migration {
 			
 			$table->increments('id');
 			
-			$table->integer('idevento'); 			
+			$table->integer('idevento')->unsigned();
+			$table->foreign('idevento')->references('id')->on('eventos')->onDelete('cascade'); 	 			
 			$table->string('titulo',30); 
 			$table->string('photo'); // es la imagen
 			

@@ -29,7 +29,8 @@ class Eventos extends Migration {
 			$table->integer('metodocuenta');
 			$table->integer('menoresmax');
 			$table->integer('adultosmax');
-			$table->integer('creador');
+			$table->integer('creador')->unsigned();
+			$table->foreign('creador')->references('id')->on('usuarios');
 			
 			$table->timestamps();
 		});
