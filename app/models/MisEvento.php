@@ -1,5 +1,5 @@
 <?php
 
-class MisEventos extends Eloquent {
+class MisEvento extends Eloquent {
 	protected $table='eventos';
 }
