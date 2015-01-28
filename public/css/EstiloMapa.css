@@ -13,3 +13,10 @@
         padding: 5px;
         border: 1px solid #999;
       }
+
+      #mapaevento {
+        height: 75%;
+        margin: 0px;
+        padding: 0px
+      }
+   
