@@ -71,6 +71,7 @@ class EventoController extends BaseController {
 		}
 			
 	}
+	public function VerEvento(){}
 	 
 	public function crearEvento()
 	{
