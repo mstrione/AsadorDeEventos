@@ -44,6 +44,11 @@
             	   <th>ACCIONES</th>
             	</thead>
         	    <tbody>
+                @foreach ($listaDeInvitados as $invitados)
+                    @if ($invitados->idusuario == Session::get('usuario_id'))
+                        <?php $iddelevento= $invitados->idevento  ?>
+                    @endif
+                @endforeach
 
                 @foreach ($listaDeEventos as $value )
                 @if ($value->creador == Session::get('usuario_id') )
@@ -56,6 +61,17 @@
                         <td><span class="glyphicon glyphicon-trash">   </span> <a href="/Evento"><span class="glyphicon glyphicon-eye-open" >   </a></span></td>
                     </tr>
                 @endif
+                @if ($value->id ==$iddelevento)
+                <?php $usuarios=Usuario::find($value->creador)?>
+                    <tr>
+                        <td>{{$value->nombre}}</td>
+                        <td>{{$value->direccion}}</td>
+                        <td>{{$value->fecha}}</td>
+                        <td>{{{$usuarios->username }}}</td> 
+                        <td> <a href="/Evento"><span class="glyphicon glyphicon-eye-open" >   </a></span></td>
+                    </tr>
+                @endif
+
                 @endforeach
 
 
