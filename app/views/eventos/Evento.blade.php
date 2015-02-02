@@ -1,12 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    @include('includes.headC')
+    @include('includes.headersesion')
     {{ HTML::script('js/vallenato.js') }}
     {{ HTML::style('css/vallenato.css') }}
     {{ HTML::script('js/datepicker.js') }}
     {{ HTML::script('js/MapaEvento.js') }}
-    {{ HTML::style('css/datepicker.css') }}
-
+    {{ HTML::style('css/datepicker.css') }} 
     {{ HTML::style('css/EstiloMapa.css') }}
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script >google.maps.event.addDomListener(window, 'load', initialize);  
@@ -14,7 +13,7 @@
 
 </head>
 <body>
- @include('includes.headersesion')
+ @include('includes.headEventoX')
 
     <div class="container"> 
         <div class="well"> 
