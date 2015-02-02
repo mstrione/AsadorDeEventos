@@ -71,7 +71,12 @@ class EventoController extends BaseController {
 		}
 			
 	}
-	public function VerEvento(){}
+	public function VerEvento($idevento=null)
+	{
+		$TEvento=Evento::find($idevento);
+		 return View::make('eventos.Evento',array('TEvento' => $TEvento));
+		
+	}
 	 
 	public function crearEvento()
 	{

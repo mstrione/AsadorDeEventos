@@ -38,7 +38,4 @@ Route::get('crearEvento', 'EventoController@get_crearEvento');
 Route::post('crearEvento', 'EventoController@get_EventoX');
 Route::Post('/MisEventos','EventoController@get_EventoX'); 
 
-Route::get('/Evento',function()
-	{
-		return View::make('eventos.Evento');
-	});
+Route::get('/Evento{idevento?}','EventoController@VerEvento');

@@ -68,7 +68,7 @@
                         <td>{{$value->direccion}}</td>
                         <td>{{$value->fecha}}</td>
                         <td>{{{$usuarios->username }}}</td> 
-                        <td> <a href="/Evento"><span class="glyphicon glyphicon-eye-open" >   </a></span></td>
+                        <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button></td>
                     </tr>
                 @endif
 
@@ -92,6 +92,12 @@
             </table>
         </div>
     </div>
+    <script >
+    function VerEvento(idevento)
+    {
+        window.location.href="/Evento"+idevento;
+    }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>

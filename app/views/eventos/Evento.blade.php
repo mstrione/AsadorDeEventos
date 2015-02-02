@@ -28,28 +28,28 @@
                                 <div class="form-group">
                                     <label for="inputEmail" class="col-lg-2 control-label">Nombre del evento</label>
                                     <div class="col-lg-10">
-                                        <input class="form-control" id="disabledInput" type="text" placeholder="" disabled="">
+                                        <input class="form-control" id="disabledInput" type="text" value ="{{$TEvento->nombre}}"placeholder="" disabled="">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="inputEmail" class="col-lg-2 control-label">Lugar</label>
                                     <div class="col-lg-10">
-                                      <input class="form-control" id="disabledInput" type="text" placeholder="" disabled="">
+                                      <input class="form-control" id="disabledInput" type="text" value ="{{$TEvento->direccion}}"placeholder="" disabled="">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="inputEmail" class="col-lg-2 control-label">fecha y hora </label>
                                     <div class="col-lg-10">
-                                      <input class="form-control" id="disabledInput" type="text" placeholder="" disabled="">
+                                      <input class="form-control" id="disabledInput" type="text" value ="{{$TEvento->fecha}}  {{$TEvento->hora}} " placeholder="" disabled="">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="textArea" class="col-lg-2 control-label">Descripcion del evento</label>
                                     <div class="col-lg-10">
-                                        <textarea class="form-control" rows="3" id="textArea" disabled=""></textarea>        
+                                        <textarea class="form-control" rows="3" id="textArea" disabled="" >{{$TEvento->descripcion}}</textarea>        
                                     </div>
                                 </div>
                             </fieldset>
