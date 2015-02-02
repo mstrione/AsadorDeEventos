@@ -51,7 +51,7 @@
         				<td>{{$value->direccion}}</td>
         				<td>{{$value->fecha}}</td>
         				<td>{{{$usuarios->username }}}</td> 
-        				<td><span class="glyphicon glyphicon-trash"></span></td>
+        				<td><span class="glyphicon glyphicon-trash">   </span> <a href="/Evento"><span class="glyphicon glyphicon-eye-open" >   </a></span></td>
 
                         
    	
