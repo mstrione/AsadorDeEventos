@@ -74,7 +74,8 @@ class EventoController extends BaseController {
 	public function VerEvento($idevento=null)
 	{
 		$TEvento=Evento::find($idevento);
-		 return View::make('eventos.Evento',array('TEvento' => $TEvento));
+		$listaDeInvitados=Invitado::where('idevento','=',$idevento)->get();
+		 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
 		
 	}
 	 

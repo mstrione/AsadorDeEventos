@@ -17,7 +17,7 @@
 
     <div class="container"> 
         <div class="well"> 
-            <div><h1 id="type"> Mis Eventos</h1></div>
+            <div><h1 id="type">Evento</h1></div>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="well bs-component">
@@ -26,8 +26,8 @@
                                 <legend>Datos del evento</legend>
                                 <div class="form-group">
                                     <label for="inputEmail" class="col-lg-2 control-label">Nombre del evento</label>
-                                    <div class="col-lg-10">
-                                        <input class="form-control" id="disabledInput" type="text" value ="{{$TEvento->nombre}}"placeholder="" disabled="">
+                                    <div class="col-lg-10">                                        
+                                          <input class="form-control" id="disabledInput" type="text" value ="{{$TEvento->nombre}}"placeholder="" disabled="">
                                     </div>
                                 </div>
 
@@ -66,18 +66,27 @@
                                 <div  id="mapaevento"></div>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-primary">Editar Evento</a>         
+                        @if(Session::has('usuario_id')==$TEvento->creador)
+                        <a href="#" class="btn btn-primary">Editar Evento</a>
+                        @endif         
                     </form>
                 </div>
             </div>
             <div class="page-header">
                 <h1 id="navbar">Mensajes</h1>
             </div>
-            <div class="form-group">
-                <div class="col-lg-10">
-                    <textarea class="form-control" rows="3" id="textArea" disabled=""></textarea>     
+                <div class="form-group">
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="3" id="textArea" disabled=""></textarea> 
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Button</button>
+                            </span>
+                        </div>    
+                    </div>
                 </div>
-            </div>
+                
 <br><br>
 
             <div class="page-header">
@@ -97,17 +106,38 @@
             <div align="right"><a href="/crearEvento" class="btn btn-primary" >Agregar invitado +</a></div><br>
             <table class='table table-striped table-hover'>
                 <thead>
+                
                    <th>Nombre</th>
                    <th>asistirá</th>
                    <th>adultos</th>
                    <th>niños</th>
+                   @if(Session::has('usuario_id')==$TEvento->creador)
                    <th>notificado</th>
                    <th>gasto</th>
                    <th>Costo</th>
                    <th>Balance</th>
                    <th>$ok</th>
                    <th>Acciones</th>
+                   @endif
                 </thead>
+                <tbody>
+                @foreach($listaDeInvitados as $invitado)
+                    <tr>   
+                        <td>{{$invitado->idusuario}}</td>
+                        <td>{{$invitado->confirmado}}</td>
+                        <td>{{$invitado->adultos}}</td>
+                        <td>{{$invitado->menores}}</td>
+                        @if(Session::has('usuario_id')==$TEvento->creador)
+                        <td>{{$invitado->notificado}}</td>
+                        <td>{{$invitado->gasto}}</td>
+                        <td>{{$invitado->costo}}</td>
+                        <td>#</td>
+                        <td>#</td>
+                        <td>#</td>
+                        @endif
+                    </tr>
+                    @endforeach
+                </tbody>
             </table>
             <a href="#" class="btn btn-primary btn-sm">Enviar invitacion a no notificacion</a>
             <a href="#" class="btn btn-primary btn-sm">Reenviar invitacion a no confirmados</a>
