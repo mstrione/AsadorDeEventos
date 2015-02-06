@@ -10,6 +10,18 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script >google.maps.event.addDomListener(window, 'load', initialize);  
     </script>
+    <script>function centerModal() {
+    $(this).css('display', 'block');
+    var $dialog = $(this).find(".modal-dialog");
+    var offset = ($(window).height() - $dialog.height()) / 2;
+    // Center modal vertically in window
+    $dialog.css("margin-top", offset);
+}
+
+$('.modal').on('show.bs.modal', centerModal);
+$(window).on("resize", function () {
+    $('.modal:visible').each(centerModal);
+});</script>
 
 </head>
 <body>
@@ -68,8 +80,15 @@
                         </div>
                         @if(Session::has('usuario_id')==$TEvento->creador)
                         <a href="#" class="btn btn-primary">Editar Evento</a>
-                        @endif         
-                    </form>
+                        @endif
+
+                        <button id="popup" onclick="div_show()">Popup</button>
+
+                        <!--pop up code -->
+
+
+
+                        
                 </div>
             </div>
             <div class="page-header">
@@ -81,7 +100,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Button</button>
+                                <button class="btn btn-default" type="button">Enviar</button>
                             </span>
                         </div>    
                     </div>
@@ -90,7 +109,7 @@
 <br><br>
 
             <div class="page-header">
-                <h1 id="navbar">invitados</h1>
+                <legend><h1 id="navbar">invitados</h1></legend>
             </div>
             <div class="form-group">
               <label for="select" class="col-lg-1 control-label">lista cerrada</label>
@@ -103,7 +122,42 @@
               </div>
             </div>
                 
-            <div align="right"><a href="/crearEvento" class="btn btn-primary" >Agregar invitado +</a></div><br>
+            <!--<div align="right"><a href="/crearEvento" class="btn btn-primary" >Agregar invitado +</a></div><br>-->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">agregar invitado </button>
+            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!--<img src="//placehold.it/1000x600" class="img-responsive">-->
+                        <form class="form-horizontal">
+  <fieldset>
+    <legend>Nuevo Invitado</legend>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Nombre</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="submit" class="btn btn-primary">Enviar invitacion</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+
+                    </div>
+                </div>
+              </div>
+            </div>
+                        <!--fin pop up code -->
             <table class='table table-striped table-hover'>
                 <thead>
                 
