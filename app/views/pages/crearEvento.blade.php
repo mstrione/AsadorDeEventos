@@ -108,7 +108,7 @@
 				<div class="form-group" class="col-lg-4 control-label">
 						{{Form::label('Coordenadas: ','',array('class'=>'col-lg-1 control-label'))}}
 						<div class="col-lg-6">
-						{{Form::text('Coordenadas','',array('class'=>'form-control', 'id'=>'cords' , 'disabled'=>'""'))}} 
+						{{Form::text('Coordenadas','',array('class'=>'form-control', 'id'=>'cords' ))}} 
 						</div>
 				</div>
 			</div>

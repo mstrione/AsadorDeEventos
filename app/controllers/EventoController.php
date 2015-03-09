@@ -18,8 +18,8 @@ class EventoController extends BaseController {
 			$NEvento -> hora=Input::get('hora');
 			$NEvento -> direccion=Input::get('direccion');
 			$NEvento -> descripcion=Input::get('descripcion');
-			$NEvento -> latitud=Input::get('nombre');
-			$NEvento -> longitud=Input::get('nombre');
+			$NEvento -> latitud=Input::get('Coordenadas');
+			$NEvento -> longitud=Input::get('Coordenadas');
 			$NEvento -> adultosmax=Input::get('adultosmax');
 			$NEvento -> menoresmax=Input::get('menoresmax');
 			$NEvento -> metodocuenta=Input::get('menoresmax');
