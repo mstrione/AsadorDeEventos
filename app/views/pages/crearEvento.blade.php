@@ -94,20 +94,28 @@
 			
 			
 	
-			<!--ACA INSERTO LO DEL MAPA-->
+			<!--ACA INSERTO EL MAPA-->
 	<div class="row">
-	<dic class='col-lg-10'>
+	<dic class='col-lg-12'>
 	<div id="panel">
-      <input onclick="clearMarkers();" type=button value="ocultar marcadores">
-      <input onclick="showMarkers();" type=button value="mostrar marcadores">
       <input onclick="deleteMarkers();" type=button value="borrar marcadores">
     </div>
     </div>
     <div id="map-canvas"></div>
     <p>click en el mapa para agregar marcadores.</p>
+
+    <div class "row">
+				<div class="form-group" class="col-lg-4 control-label">
+						{{Form::label('Coordenadas: ','',array('class'=>'col-lg-1 control-label'))}}
+						<div class="col-lg-6">
+						{{Form::text('Coordenadas','',array('class'=>'form-control', 'id'=>'cords' , 'disabled'=>'""'))}} 
+						</div>
+				</div>
 			</div>
 
-			
+	</div>
+		
+
 			
 			<div class="form-group" class="col-lg-4 col-lg-offset-2">
 				<p>{{Form::submit('Crear Evento', array('class' => 'btn btn-primary'))}}</p>

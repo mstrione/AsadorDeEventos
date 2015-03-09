@@ -18,7 +18,11 @@ function initialize() {
   // This event listener will call addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) { 
     addMarker(event.latLng); //crea el marcador en el mapa
-    var coordenadas = alert(event.latLng); //muestra un alert con las cordenadas del marcador
+    var coordenadas=event.latLng;
+    //alert(coordenadas);
+    //var coordenadas = alert(event.latLng); //muestra un alert con las cordenadas del marcador
+
+
    });
 
   // Adds a marker at the center of the map.
@@ -38,9 +42,12 @@ function addMarker(location)
     position: location,
     map: map
   });
+  document.getElementById('cords').value = location;//pone las coordenadas en el textbox coordenadas
   marcador=marcador+1;
 
   markers.push(marker);
+
+     
 };//del if
 }
 
@@ -55,6 +62,7 @@ function setAllMap(map) {
 function clearMarkers() {
   setAllMap(null);
   marcador=0
+   document.getElementById('cords').value = "";
 }
 
 // Shows any markers currently in the array.

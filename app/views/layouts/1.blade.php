@@ -5,7 +5,7 @@
 <div class="container">
 
 	<header class="row">
-		//@include('includes.headL')
+		@include('includes.headL')
 		
 		@if(!Session::has('usuario_id'))
 		
