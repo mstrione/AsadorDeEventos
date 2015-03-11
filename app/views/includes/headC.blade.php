@@ -5,7 +5,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Meating - Contacto</title>
+    <title>AdE - Contacto</title>
 
 	<!-- CARGAR EL Bootstrap -->
 

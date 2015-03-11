@@ -63,6 +63,14 @@ $(window).on("resize", function () {
                                         <textarea class="form-control" rows="3" id="textArea" disabled="" >{{$TEvento->descripcion}}</textarea>        
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-lg-2 control-label">coordenadas</label>
+                                    <div class="col-lg-10">
+                                      <input class="form-control" id="disabledInput" name="coordenadas" type="text" value ="{{$TEvento->latitud}}" placeholder="" disabled="">
+                                    </div>
+                                </div>
+
                             </fieldset>
                         </form>
                     </div>
@@ -209,7 +217,7 @@ $(window).on("resize", function () {
         <footer id="mainFooter">
             <div class="wrapped" align="center"> <!--Anclamos un footer abajo del todo de la pagina-->
                 <p class="pull-right"><a id="goTop" href="#"><h3> ^ </h3></a></p> <!--con ese icono nos lleva hacia arriba de la pagina-->
-                <p>© 2014 MEating   ·  <a href="ruta de privacidad y terminos">Privacidad y Términos</a> · Seguinos en <!--nos va a llevar a los links mencionados abajo a traves de los iconos-imagenes-->
+                <p>© 2015 Asador De Eventos   ·  <a href="ruta de privacidad y terminos">Privacidad y Términos</a> · Seguinos en <!--nos va a llevar a los links mencionados abajo a traves de los iconos-imagenes-->
                     <a href="http://facebook.com"><img src="../img/f1.png" height='30' width='70'></a> | 
                     <a href="http://twitter.com"><img src="../img/t1.png" height='30' width='70'></a> |
                     <a href="http://plus.google.com/share"><img src="../img/g1.png" height='30' width='70'></a>

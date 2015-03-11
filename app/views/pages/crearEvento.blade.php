@@ -32,16 +32,16 @@
 			<!--FECHA Y HORA-->
 			
           
-				<div class="row">
-				<div class="form-group"  >
-					{{Form::label('Fecha','',array('class'=>'col-lg-1 control-label'))}}
-					<div class="col-lg-10">
-					{{ Form::input('date','Fecha','',array( 'date_format' => 'yyyy-mm-dd')) }}
-					<!--Form::text('fecha','',array('class'=>'form-control','class'=>'input-append date','data-date-format'=>'dd-mm-yyyy'))-->
-					</div>
-					<span class="add-on"><i class="icon-th"></i></span>
+			<div class="row">
+			<div class="form-group"  >
+				{{Form::label('Fecha','',array('class'=>'col-lg-1 control-label'))}}
+				<div class="col-lg-10">
+				{{ Form::input('date','Fecha','',array( 'date_format' => 'yyyy-mm-dd')) }}
+				<!--Form::text('fecha','',array('class'=>'form-control','class'=>'input-append date','data-date-format'=>'dd-mm-yyyy'))-->
 				</div>
-				</div>
+				<span class="add-on"><i class="icon-th"></i></span>
+			</div>
+			</div>
 			
 			
 			<div class "row">
@@ -104,16 +104,11 @@
     <div id="map-canvas"></div>
     <p>click en el mapa para agregar marcadores.</p>
 
-    <div class "row">
-				<div class="form-group" class="col-lg-4 control-label">
-						{{Form::label('Coordenadas: ','',array('class'=>'col-lg-1 control-label'))}}
-						<div class="col-lg-6">
-						{{Form::text('Coordenadas','',array('class'=>'form-control', 'id'=>'cords' ))}} 
-						</div>
-				</div>
-			</div>
-
+	<div class="form-group" class="col-lg-1 control-label">
+		{{Form::text('Latitud','',array('class'=>'form-control', 'id'=>'Latitud','TYPE'=>'text' ,'style'=>"display: none" ))}}
+		{{Form::text('Longitud','',array('class'=>'form-control', 'id'=>'Longitud','TYPE'=>'text' ,'style'=>"display: none" ))}}
 	</div>
+				
 		
 
 			

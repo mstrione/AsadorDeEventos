@@ -1,5 +1,13 @@
 function initialize() {
-  var myLatlng = new google.maps.LatLng(-41.1416606, -71.3053098);
+  var a =-41.1416606;
+  var b =-71.3053098;
+  var cord=document.getElementsByName("coordenadas")[0].value;
+  var patron="(";
+  cord=cord.replace(patron,'');
+  cord=cord.replace(")",'');
+  //alert(cord);
+  var myLatlng = new google.maps.LatLng(a,b);
+  alert(myLatlng.lat());
   var mapOptions = {
     zoom: 14,
     center: myLatlng
@@ -12,3 +20,4 @@ function initialize() {
       title: 'Hello World!'
   });
 }
+//-41.1416606, -71.3053098

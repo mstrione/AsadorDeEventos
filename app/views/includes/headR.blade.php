@@ -5,7 +5,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Meating - Registrarse</title>
+    <title>AdE - Registrarse</title>
 
 	<!-- CARGAR EL Bootstrap -->
 

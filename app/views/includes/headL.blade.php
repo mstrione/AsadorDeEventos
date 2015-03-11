@@ -5,7 +5,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Meating - Inicio de Sesion</title>
+    <title>AdE - Inicio de Sesion</title>
 
 	<!-- CARGAR EL Bootstrap -->
 
