@@ -46,6 +46,7 @@
             	   <th>ACCIONES</th>
             	</thead>
         	    <tbody>
+                <?php $iddelevento=-1?>
                 @foreach ($listaDeInvitados as $invitados)
                     @if ($invitados->idusuario == Session::get('usuario_id'))
                         <?php $iddelevento= $invitados->idevento  ?>
