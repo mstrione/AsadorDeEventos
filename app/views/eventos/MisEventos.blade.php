@@ -32,7 +32,9 @@
     	<div class="well"> 
 	        <div><h1 id="type"> Mis Eventos</h1></div>
                 <div align="right"><a href="/crearEvento" class="btn btn-primary" >Agregar Evento +</a></div><br>		
-
+                @if(Session::has('message'))
+                <div class="alert alert-{{Session::get('class')}} ">{{Session::get('message')}}</div>
+                @endif
     
 
             <table class='table table-striped table-hover'>
@@ -61,7 +63,8 @@
                         <td>
                         <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)">
                         <span class="glyphicon glyphicon-eye-open" ></span></button>
-                        <span class="glyphicon glyphicon-trash"></span> </td>
+                        <a href="{{ url('/MisEventos/destroy',$value->id) }}" class="btn btn-danger" >
+                        <span class="glyphicon glyphicon-trash"></span></a> </td>
                     </tr>
                 @endif
                 @if ($value->id ==$iddelevento)

@@ -67,10 +67,10 @@ $(window).on("resize", function () {
                                 <div class="form-group">
                                     
                                     <div class="col-lg-10">
-                                      <input class="form-control" id="disabledInput" name="Latitud" type="text" value ="{{$TEvento->latitud}}" placeholder="" disabled="">
+                                      <input class="form-control" id="disabledInput" name="Latitud" type="text" value ="{{$TEvento->latitud}}" placeholder="" disabled="" style="display: none">
                                     </div>
                                     <div class="col-lg-10">
-                                      <input class="form-control" id="disabledInput" name="Longitud" type="text" value ="{{$TEvento->longitud}}" placeholder="" disabled="">
+                                      <input class="form-control" id="disabledInput" name="Longitud" type="text" value ="{{$TEvento->longitud}}" placeholder="" disabled="" style="display: none">
                                     </div>
                                 </div>
 

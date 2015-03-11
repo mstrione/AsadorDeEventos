@@ -79,24 +79,10 @@ class EventoController extends BaseController {
 		
 	}
 	 
-	public function crearEvento()
-	{
-		/*
-		$respuesta = Evento::agregarEvento(Input::all());
-		if ($respuesta['error']==true)
-		{
-			return Redirect::to('crearEvento')->withErrors($respuesta['mensaje'])->withInput;			
-		}else {
-			return Redirect::to('evento')->with('mensaje', $respuesta['mensaje']);
-			}*/
-	}
+	
 
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+	
 	public function store()
 	{
 		//
@@ -109,16 +95,7 @@ class EventoController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function mostrarEventos($id)
-	{
-		/*
-		$eventos=Evento::all(); // o mostrar el evento pasado por id
-		$usuarios=Usuario::all;
-		$items=Item::all;
-		$fotos=Foto::all;
-		$invitados=Invitado::all;
-		//falta poner el chat e items ok!*/
-	}
+	
 
 
 	/**
@@ -151,9 +128,19 @@ class EventoController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($idevento)
 	{
-		//
+		$TEvento=Evento::find($idevento);
+		if ($TEvento->delete())
+		{
+		Session::flash('message','Se ha eliminado correctamente');
+		Session::flash('class','success');
+		}else
+		{
+		Session::flash('message','ha ocurrido un error!');
+		Session::flash('class','danger');
+		}
+		return Redirect::to('MisEventos');
 	}
 
 
