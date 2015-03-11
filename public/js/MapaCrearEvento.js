@@ -42,8 +42,10 @@ function addMarker(location)
     position: location,
     map: map
   });
-  document.getElementById('cords').defaultValue = location;//pone las coordenadas en el textbox coordenadas
-  marcador=marcador+1;
+  document.getElementById('Latitud').defaultValue = location.lat();
+  document.getElementById('Longitud').defaultValue = location.lng();//pone las coordenadas en el textbox coordenadas
+  
+  marcador=marcador+1; 
 
   markers.push(marker);
 

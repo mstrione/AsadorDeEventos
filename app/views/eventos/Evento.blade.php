@@ -65,9 +65,12 @@ $(window).on("resize", function () {
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="inputEmail" class="col-lg-2 control-label">coordenadas</label>
+                                    
                                     <div class="col-lg-10">
-                                      <input class="form-control" id="disabledInput" name="coordenadas" type="text" value ="{{$TEvento->latitud}}" placeholder="" disabled="">
+                                      <input class="form-control" id="disabledInput" name="Latitud" type="text" value ="{{$TEvento->latitud}}" placeholder="" disabled="">
+                                    </div>
+                                    <div class="col-lg-10">
+                                      <input class="form-control" id="disabledInput" name="Longitud" type="text" value ="{{$TEvento->longitud}}" placeholder="" disabled="">
                                     </div>
                                 </div>
 
