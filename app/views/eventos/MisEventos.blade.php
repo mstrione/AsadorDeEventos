@@ -51,14 +51,17 @@
                 @endforeach
 
                 @foreach ($listaDeEventos as $value )
-                @if ($value->creador == Session::get('usuario_id') )
+                @if ($value->creador == Session::get('usuario_id') ) 
                   <?php $usuarios=Usuario::find($value->creador)?>
                   <tr>   
                         <td>{{$value->nombre}}</td>
                         <td>{{$value->direccion}}</td>
                         <td>{{$value->fecha}}</td>
                         <td>{{{$usuarios->username }}}</td> 
-                        <td><span class="glyphicon glyphicon-trash">   </span> <a href="/Evento"><span class="glyphicon glyphicon-eye-open" >   </a></span></td>
+                        <td>
+                        <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)">
+                        <span class="glyphicon glyphicon-eye-open" ></span></button>
+                        <span class="glyphicon glyphicon-trash"></span> </td>
                     </tr>
                 @endif
                 @if ($value->id ==$iddelevento)
