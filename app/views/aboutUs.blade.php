@@ -18,20 +18,21 @@
 			<div class="well well-sm">
 				<div class="row">
 					<div class="col-sm-6 col-md-4">
-						<img src="img/eze.jpg" alt="" class="img-rounded img-responsive" />
+						<img src="http://placehold.it/225x225" alt="" class="img-rounded img-responsive" />
 					</div>
 					<div class="col-sm-6 col-md-8">
-						<h3>Torres Almada Hector Ezequiel</h3>
+						<h3>Morabes Javier</h3>
 						<blockquote class="pull.left"> <!Este Blackquote me ordena el texto hacia la izquierda, dandole un mejor formato ubicandolo dentro del recuadro sin irse de la pagina>
-							<p class="text-left"><h4>Soy estudiante de 5to año de Ingeniería Informática en Universidad Fasta.Trabaje como QC de antenas para radares. Fui encargado de deposito de componentes de electronica. Realizo diseño grafico y mantenimiento informatico de manera independiente.
-							Disfruto del aprendizaje, y busco superarme dia a dia.  Aficionado a la ciencia y tecnologia.</h4></p>
+						<p class="text-left">Estudiante de 5° año de la carrera ingenieria en informatica en la universidad Fasta de San Carlos De Bariloche, Diseñador, programador y analista en el proyecto Asador de Eventos.</p>
 						</blockquote>
 						<small><cite title="Bariloche, Arg">Bariloche, ARG <i class="glyphicon glyphicon-map-marker">
 						</i></cite></small>
 						<p>
-                        <i class="glyphicon glyphicon-envelope"></i>eze.torress@gmail.com
+                        <i class="glyphicon glyphicon-envelope"></i>javiermorabes@hotmail.com
                         <br />
-                        <i class="glyphicon glyphicon-gift"></i>June 27, 1988</p>
+                        <i class="glyphicon glyphicon-globe"></i><a href="http://www.google.com">www.google.com</a>
+                        <br />
+                        <i class="glyphicon glyphicon-gift"></i></p>
                     <!-- Split button -->
                     
 					</div>
@@ -41,20 +42,19 @@
 	</div>
 </div>
 
-
-
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-xs-12 col-xs-12">
 			<div class="well well-sm">
 				<div class="row">
 					<div class="col-sm-6 col-md-4">
-						<img src="http://placehold.it/225x225" alt="" class="img-rounded img-responsive" />
+						<img src="img/cris.jpg" alt="" class="img-rounded img-responsive" />
 					</div>
 					<div class="col-sm-6 col-md-8">
-						<h3>Cristina Fajardo</h3>
+						<h3>Fajardo Cristina</h3>
 						<blockquote class="pull.left"> <!Este Blackquote me ordena el texto hacia la izquierda, dandole un mejor formato ubicandolo dentro del recuadro sin irse de la pagina>
-						<p class="text-left">Soy estudiante de 3to año de Ingeniería Informática en Universidad Fasta y 1er año de Ingeniería en Telecomuniciones en UNRN. Realizo diseño grafico de manera independiente.
+						<p class="text-left">Soy estudiante de 3to año de Ingeniería Informática en Universidad Fasta y 2do año de Ingeniería en Telecomuniciones en UNRN. Realizo diseño grafico de manera independiente.
+						Colaboradora del proyecto Meating del cual se originó el proyecto Asador de Eventos
 						</p>
 						</blockquote>
 						<small><cite title="Bariloche, Arg">Bariloche, ARG <i class="glyphicon glyphicon-map-marker">
@@ -82,21 +82,21 @@
 			<div class="well well-sm">
 				<div class="row">
 					<div class="col-sm-6 col-md-4">
-						<img src="http://placehold.it/225x225" alt="" class="img-rounded img-responsive" />
+						<img src="img/eze.jpg" alt="" class="img-rounded img-responsive" />
 					</div>
 					<div class="col-sm-6 col-md-8">
-						<h3>Javier Morabes</h3>
+						<h3>Torres Almada Hector Ezequiel</h3>
 						<blockquote class="pull.left"> <!Este Blackquote me ordena el texto hacia la izquierda, dandole un mejor formato ubicandolo dentro del recuadro sin irse de la pagina>
-						<p class="text-left">Estudiante de 5° año de la carrera ingenieria en informatica en la universidad Fasta de San Carlos De Bariloche, Diseñador, programador y analista en el proyecto Asador de Eventos</p>
+							<p class="text-left"><h4>Soy estudiante de 5to año de Ingeniería Informática en Universidad Fasta.Trabaje como QC de antenas para radares. Fui encargado de deposito de componentes de electronica. Realizo diseño grafico y mantenimiento informatico de manera independiente.
+							Disfruto del aprendizaje, y busco superarme dia a dia.  Aficionado a la ciencia y tecnologia.
+							Colaborador del proyecto Meating del cual se originó el proyecto Asador de Eventos</h4></p>
 						</blockquote>
 						<small><cite title="Bariloche, Arg">Bariloche, ARG <i class="glyphicon glyphicon-map-marker">
 						</i></cite></small>
 						<p>
-                        <i class="glyphicon glyphicon-envelope"></i>javiermorabes@hotmail.com
+                        <i class="glyphicon glyphicon-envelope"></i>eze.torress@gmail.com
                         <br />
-                        <i class="glyphicon glyphicon-globe"></i><a href="http://www.google.com">www.google.com</a>
-                        <br />
-                        <i class="glyphicon glyphicon-gift"></i></p>
+                        <i class="glyphicon glyphicon-gift"></i>June 27, 1988</p>
                     <!-- Split button -->
                     
 					</div>
