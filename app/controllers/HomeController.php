@@ -42,14 +42,44 @@ class HomeController extends BaseController {
 		return View::make('contacto');
 	}
 	
-	public function post_contacto()
+	// public function post_contacto()
+	// {
+	// 	$input = Input::all();
+	// 	$rules = array(
+	// 		'nombre' => 'required',
+	// 		'email' => 'required|email',
+	// 		'mensaje' => 'required',
+	// 	);
+	// 	$validator = Validator::make($input, $rules); //aca se compara el input con las reglas
+	// 	if($validator->fails()) //si la validacion falla
+	// 	{
+	// 		return Redirect::back()->withErrors($validator)->with('estado', 'No enviado. Comprueba los datos que has ingresado');
+	// 	}
+	// 	else
+	// 	{
+	// 		$datos = array(
+	// 			'nombre' => Input::get('nombre'),
+	// 			'email' => Input::get('email'),
+	// 			'asunto' => Input::get('asunto'),
+	// 			'mensaje' => Input::get('mensaje')
+	// 		);//se envia el mail
+	// 		Mail::send('emails.contact', $datos, function($message) 
+	// 		{
+	// 		    $message->from('meating@web.com', 'Laravel');
+	// 		    $message->to(Input::get('email'))->subject(Input::get('asunto'));
+	// 		});
+	// 		return Redirect::to('/contacto')->with('estado', 'Mensaje enviado correctamente');
+	// 	}
+	// }
+
+	public function contacto()
 	{
 		$input = Input::all();
 		$rules = array(
 			'nombre' => 'required',
 			'email' => 'required|email',
 			'mensaje' => 'required',
-		);
+			);
 		$validator = Validator::make($input, $rules); //aca se compara el input con las reglas
 		if($validator->fails()) //si la validacion falla
 		{
@@ -57,24 +87,8 @@ class HomeController extends BaseController {
 		}
 		else
 		{
-			$datos = array(
-				'nombre' => Input::get('nombre'),
-				'email' => Input::get('email'),
-				'asunto' => Input::get('asunto'),
-				'mensaje' => Input::get('mensaje')
-			);//se envia el mail
-			Mail::send('emails.contact', $datos, function($message) 
-			{
-			    $message->from('meating@web.com', 'Laravel');
-			    $message->to(Input::get('email'))->subject(Input::get('asunto'));
-			});
-			return Redirect::to('/contacto')->with('estado', 'Mensaje enviado correctamente');
-		}
-	}
 
-	public function contacto()
-	{
-		$msj =null;
+			$msj =null;
 			$data= array(
 				'nombre' => Input::get('nombre'),
 				'email' => Input::get('email'),
@@ -94,7 +108,6 @@ class HomeController extends BaseController {
 		
 
 		return View::make('contacto',array('mensaje'=>'$msj'));
+		}
 	}
-	
-	
 }
