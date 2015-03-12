@@ -71,6 +71,30 @@ class HomeController extends BaseController {
 			return Redirect::to('/contacto')->with('estado', 'Mensaje enviado correctamente');
 		}
 	}
+
+	public function contacto()
+	{
+		$msj =null;
+			$data= array(
+				'nombre' => Input::get('nombre'),
+				'email' => Input::get('email'),
+				'asunto' => Input::get('asunto'),
+				'mensaje' => Input::get('mensaje')
+				);
+			$FromEmail = 'asadordeeventos@gmail.com';
+			$FromName = 'administrador';
+
+			Mail::send('emails.contacto', $data, function($mensaje) use ($FromEmail,$FromName)
+			{
+				$mensaje->to($FromEmail,$FromName);
+				$mensaje->from($FromEmail,$FromName);
+				$mensaje->subject('Nuevo Mail de Contacto');
+			});
+			$msj ='<div class="text-info">Mensaje Enviado Con Exito</div>';
+		
+
+		return View::make('contacto',array('mensaje'=>'$msj'));
+	}
 	
 	
 }

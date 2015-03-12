@@ -7,7 +7,8 @@
 	
 </head>
 @section('content')
-{{Form::open(array('method' => 'POST', 'url' => '/contacto', 'role' => 'form'))}}
+
+{{Form::open(array('method' => 'POST', 'action' =>'HomeController@contacto' , 'role' => 'form'))}}
 
 
 
@@ -40,6 +41,7 @@
 		<span class="help-block">{{ $errors->first('mensaje') }}</span>
 	</div>
 	<div class="form-group">
+			{{form::input('hidden','contacto')}}
 		<p>{{Form::submit('Enviar', array('class' => 'btn btn-default'))}}</p>
 	</div>
 

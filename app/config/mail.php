@@ -27,8 +27,8 @@ return array(
 	| the Mailgun mail service which will provide reliable deliveries.
 	|
 	*/
-
-	'host' => 'smtp.mailgun.org',
+	'host' => 'smtp.gmail.com',
+	//'host' => 'smtp.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -40,8 +40,8 @@ return array(
 	| stay compatible with the Mailgun e-mail application by default.
 	|
 	*/
-
 	'port' => 587,
+	//'port' => 587,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ return array(
 	| used globally for all e-mails that are sent by your application.
 	|
 	*/
-
+	//'from' => array('address' => 'asadordeeventos@gmail.com', 'name' => 'Asador De Eventos'),
 	'from' => array('address' => null, 'name' => null),
 
 	/*
@@ -79,8 +79,8 @@ return array(
 	| connection. You may also set the "password" value below this one.
 	|
 	*/
-
-	'username' => null,
+	'username' => 'asadordeeventos@gmail.com',
+	//'username' => null,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -92,8 +92,8 @@ return array(
 	| connection so that the application will be able to send messages.
 	|
 	*/
-
-	'password' => null,
+	'password' => 'bazzinga',
+	//'password' => null,
 
 	/*
 	|--------------------------------------------------------------------------

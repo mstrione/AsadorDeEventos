@@ -7,7 +7,7 @@ Route::get('/about', 'HomeController@showAbout');
 
 //contacto
 Route::get('/contacto', 'HomeController@get_contacto');
-Route::post('/contacto', 'HomeController@post_contacto');
+Route::post('/contacto', 'HomeController@contacto');
 
 //RUTA USUARIOS********************************************
 Route::get(Lang::get('routes.login'), 'UsuarioController@get_login');
