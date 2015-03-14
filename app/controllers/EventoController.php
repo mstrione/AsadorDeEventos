@@ -143,5 +143,28 @@ class EventoController extends BaseController {
 		return Redirect::to('MisEventos');
 	}
 
+	// public function invitar($idevento=null)
+	// {
+		
+
+	// 		$msj =null;
+	// 		$data= array(
+	// 			'nombre' => Input::get('nombre'),
+	// 			'email' => Input::get('email')
+	// 			);
+	// 		$FromEmail = 'asadordeeventos@gmail.com';
+	// 		$FromName = 'administrador';
+
+	// 		Mail::send('emails.invitado', $data, function($mensaje) use ($FromEmail,$FromName)
+	// 		{
+	// 			$mensaje->to($FromEmail,$FromName);
+	// 			$mensaje->from($FromEmail,$FromName);
+	// 			$mensaje->subject('Nuevo Mail de Contacto');
+	// 		});		
+
+	// 	return View::make('contacto');
+		
+	// }
+
 
 }

@@ -30,9 +30,9 @@
 						<p>
                         <i class="glyphicon glyphicon-envelope"></i>javiermorabes@hotmail.com
                         <br />
-                        <i class="glyphicon glyphicon-globe"></i><a href="http://www.google.com">www.google.com</a>
+                        <i class="glyphicon glyphicon-globe"></i><a href="https://twitter.com/javi_4D">https://twitter.com/javi_4D</a>
                         <br />
-                        <i class="glyphicon glyphicon-gift"></i></p>
+                        <i class="glyphicon glyphicon-gift"></i>MAy 21, 1990</p>
                     <!-- Split button -->
                     
 					</div>
@@ -62,7 +62,7 @@
 						<p>
                         <i class="glyphicon glyphicon-envelope"></i>crisfajardo88@gmail.com
                         <br />
-                        <i class="glyphicon glyphicon-globe"></i><a href="http://www.google.com">www.google.com</a>
+                        <i class="glyphicon glyphicon-globe"></i><a href="https://www.facebook.com/cristina.fajardo3">www.facebook.com/cristina.fajardo3</a>
                         <br />
                         <i class="glyphicon glyphicon-gift"></i>March 23, 1988</p>
                     <!-- Split button -->
@@ -96,6 +96,7 @@
 						<p>
                         <i class="glyphicon glyphicon-envelope"></i>eze.torress@gmail.com
                         <br />
+                        <i class="glyphicon glyphicon-globe"></i><a href="https://www.twitter.com/Skiel7">https://twitter.com/Skiel7  </a><br />
                         <i class="glyphicon glyphicon-gift"></i>June 27, 1988</p>
                     <!-- Split button -->
                     

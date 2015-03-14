@@ -22,10 +22,10 @@ $('.modal').on('show.bs.modal', centerModal);
 $(window).on("resize", function () {
     $('.modal:visible').each(centerModal);
 });</script>
-
+@include('includes.headEventoX')
 </head>
 <body>
- @include('includes.headEventoX')
+ 
 
     <div class="container"> 
         <div class="well"> 
@@ -96,26 +96,23 @@ $(window).on("resize", function () {
                         <button id="popup" onclick="div_show()">Popup</button>
 
                         <!--pop up code -->
-
-
-
-                        
+                    </form>                        
                 </div>
             </div>
             <div class="page-header">
                 <h1 id="navbar">Mensajes</h1>
             </div>
-                <div class="form-group">
-                    <div class="col-lg-10">
-                        <textarea class="form-control" rows="3" id="textArea" disabled=""></textarea> 
-                        <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Enviar</button>
-                            </span>
-                        </div>    
-                    </div>
+            <div class="form-group">
+                <div class="col-lg-10">
+                    <textarea class="form-control" rows="3" id="textArea" disabled=""></textarea> 
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Enviar</button>
+                        </span>
+                    </div>    
                 </div>
+            </div>
                 
 <br><br>
 
@@ -123,51 +120,50 @@ $(window).on("resize", function () {
                 <legend><h1 id="navbar">invitados</h1></legend>
             </div>
             <div class="form-group">
-              <label for="select" class="col-lg-1 control-label">lista cerrada</label>
-              <div class="col-lg-1">
-                <select class="form-control" id="select">
-                  <option>Si</option>
-                  <option>No</option>
-                </select>
-                <br>
-              </div>
+                <label for="select" class="col-lg-1 control-label">lista cerrada</label>
+                <div class="col-lg-1">
+                    <select class="form-control" id="select">
+                      <option>Si</option>
+                      <option>No</option>
+                    </select><br>
+                </div>
             </div>
                 
-            <!--<div align="right"><a href="/crearEvento" class="btn btn-primary" >Agregar invitado +</a></div><br>-->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">agregar invitado </button>
             <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <!--<img src="//placehold.it/1000x600" class="img-responsive">-->
-                        <form class="form-horizontal">
-  <fieldset>
-    <legend>Nuevo Invitado</legend>
-    <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputPassword" class="col-lg-2 control-label">Nombre</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="submit" class="btn btn-primary">Enviar invitacion</button>
-      </div>
-    </div>
-  </fieldset>
-</form>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'InvitadoController@invitar' , 'role' => 'form'))}}
+                                <fieldset>
+                                    <legend>Nuevo Invitado</legend>
+                                    <div class="form-group" >
+                                      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                      <div class="col-lg-10">
+                                        <input type="text" class="form-control"  name="email" placeholder="Email">
+                                      </div>
+                                    </div>
 
+                                    <div class="form-group">
+                                      <label for="inputPassword" class="col-lg-2 control-label">Nombre</label>
+                                      <div class="col-lg-10">
+                                        <input type="text" class="form-control"  name="nombre" placeholder="Nombre">
+                                      </div>
+                                    </div>
 
+                                    <div class="form-group">
+                                      <div class="col-lg-10 col-lg-offset-2">
+                                      {{form::input('hidden','invitado')}}
+                                        <p>{{Form::submit('Enviar', array('class' => 'btn btn-default'))}}</p>
+                                      </div>
+                                    </div>
+                                </fieldset>
+                            {{Form::close()}}
+                        </div>
                     </div>
                 </div>
-              </div>
             </div>
+
                         <!--fin pop up code -->
             <table class='table table-striped table-hover'>
                 <thead>
@@ -186,7 +182,7 @@ $(window).on("resize", function () {
                    @endif
                 </thead>
                 <tbody>
-                @foreach($listaDeInvitados as $invitado)
+                    @foreach($listaDeInvitados as $invitado)
                     <tr>   
                         <td>{{$invitado->idusuario}}</td>
                         <td>{{$invitado->confirmado}}</td>
@@ -208,12 +204,9 @@ $(window).on("resize", function () {
             <a href="#" class="btn btn-primary btn-sm">Reenviar invitacion a no confirmados</a>
             <a href="#" class="btn btn-primary btn-sm">Enviar Cuentas a Asistentes</a>
         </div>
-
-        </div>
-
     </div>
-  
-  
+
+    
 </body>
     <div id="footer">
         <!-- FOOTER -->
@@ -228,5 +221,5 @@ $(window).on("resize", function () {
                 </p>
             </div>
         </footer>
- </div>
+    </div>
 </html>

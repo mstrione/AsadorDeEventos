@@ -10,16 +10,15 @@
 	<div class="page-header">
     <div class="jumbotron">
  
-        
-        <p> MEating surge como un proyecto realizado para una materia universitaria.</p>
-        <p> Como el fin de esta pagina consiste en organizar eventos, el nombre se origino a traves de un juego de palabras en ingles, meet(conocer), meat(carne), eat(comer), meeting(cumplir), ME (de uno mismo, como organizador).</p>
+        <p>Asador de eventos surge como un proyecto realizado para una Materia universitaria.</p>
+        <p>AdE es la derivación de un proyecto grupal anterior , llamado en su tiempo MEating el cual se vio forzado a ser abandonado por diferentes motivos entre los miembros del grupo; Dando paso a la creación de AdE</p>
         <div class="row">
             <div class="span6 screenshotHolder">
                 <img src="125x125.jpg" class="img-thumbnail" alt="Thumbnail Image">
             </div>
             <div class="span4 pull-right description">
                 <h2 class="featurette-heading">Crear eventos</h2>
-                <p class="lead ">Con MEating podras crear los mejores eventos en el menor tiempo.</p>
+                <p class="lead ">Con AdE podras crear los mejores eventos en el menor tiempo.</p>
                 <p class="lead ">Con la ayuda de Google Maps, tus invitados no van a tener excusa para perderse.</p>
             </div>
         </div>
