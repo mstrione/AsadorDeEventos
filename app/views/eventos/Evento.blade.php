@@ -153,7 +153,7 @@ $(window).on("resize", function () {
 
                                     <div class="form-group">
                                       <div class="col-lg-10 col-lg-offset-2">
-                                      {{form::input('hidden','invitado')}}
+                                      {{form::input('hidden','ideventoN',$TEvento->id)}}
                                         <p>{{Form::submit('Enviar', array('class' => 'btn btn-default'))}}</p>
                                       </div>
                                     </div>

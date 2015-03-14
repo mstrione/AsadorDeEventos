@@ -14,20 +14,36 @@ class InvitadoController extends BaseController {
 
 	public function invitar($idevento=null)
 	{
-		$msj =null;
-		$data= array(
-			'nombre' => Input::get('nombre'),
-			'email' => Input::get('email')
-			);
-		$FromEmail = 'asadordeeventos@gmail.com';
-		$FromName = 'administrador';
+		 $msj =null;
+		 $data= array(
+		 	'nombre' => Input::get('nombre'),
+		 	'email' => Input::get('email')
+		 	);
+		 $FromEmail = 'asadordeeventos@gmail.com';
+		 $FromName = 'administrador';
 
-		Mail::send('emails.invitado', $data, function($mensaje) use ($FromEmail,$FromName)
-		{
-			$mensaje->to($FromEmail,$FromName);
-			$mensaje->from($FromEmail,$FromName);
-			$mensaje->subject('Nuevo Mail de Contacto');
-		});		
+		 Mail::send('emails.invitado', $data, function($mensaje) use ($FromEmail,$FromName)
+		 {
+		 	$mensaje->to($FromEmail,$FromName);
+		 	$mensaje->from($FromEmail,$FromName);
+		 	$mensaje->subject('Nuevo Mail de Contacto');
+		 });
+		$email=Input::get('email');
+		$listaDeusuarios=Usuario::where('email','=',$email)->get();
+		foreach ($listaDeusuarios as $usuario ) {
+			$Ninvitado = new Invitado;
+			$Ninvitado->idevento= Input::get('ideventoN');
+			$Ninvitado->idusuario=$usuario->id;
+			$Ninvitado->email= $usuario->email;
+			$Ninvitado->rol=1 ; //rol del invitado
+			$Ninvitado->save();
+		}
+		
+			$TEvento=Evento::find(Input::get('ideventoN'));
+		$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
+		 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+
+
 	}
 
 
