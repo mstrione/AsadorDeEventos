@@ -18,7 +18,7 @@
 			<div class="well well-sm">
 				<div class="row">
 					<div class="col-sm-6 col-md-4">
-						<img src="http://placehold.it/225x225" alt="" class="img-rounded img-responsive" />
+						<img src="img/javi.jpg" alt="" class="img-rounded img-responsive" />
 					</div>
 					<div class="col-sm-6 col-md-8">
 						<h3>Morabes Javier</h3>
@@ -32,7 +32,7 @@
                         <br />
                         <i class="glyphicon glyphicon-globe"></i><a href="https://twitter.com/javi_4D">https://twitter.com/javi_4D</a>
                         <br />
-                        <i class="glyphicon glyphicon-gift"></i>MAy 21, 1990</p>
+                        <i class="glyphicon glyphicon-gift"></i>May 21, 1990</p>
                     <!-- Split button -->
                     
 					</div>

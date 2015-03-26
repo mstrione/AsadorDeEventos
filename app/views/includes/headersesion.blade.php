@@ -15,7 +15,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{Session::get('usuario_username')}} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/MisEventos">Mis Eventos</a></li>
-                        <li><a href="#">Mi Perfil</a></li>
+                        <li><a href="/perfil">Mi Perfil</a></li>
                         <li class="divider"></li>
                         <li><a href="/logout">Cerrar Sesion</a></li>
                      </ul>

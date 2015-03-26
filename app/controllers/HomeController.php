@@ -21,6 +21,11 @@ class HomeController extends BaseController {
 		return View::make('home');
 	}
 
+	public function terminos()
+	{
+		return View::make('pages.terminos');
+	}
+
 	//RUTA DE ACERCA DE MEATING
 	public function showAbout()
 	{

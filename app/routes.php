@@ -41,3 +41,5 @@ Route::get('/MisEventos/destroy/{id}','EventoController@destroy');
 
 Route::get('/Evento/{idevento?}','EventoController@VerEvento');
 Route::post('/Evento/{idevento?}','InvitadoController@invitar');
+Route::get('/perfil','UsuarioController@MostralPerfil');
+Route::get('/terminos', 'HomeController@terminos');

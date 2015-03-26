@@ -14,7 +14,10 @@ class UsuarioController extends BaseController {
 		 //return 'Esta es la lista de usuarios';
 
 	} 
-
+	public function MostralPerfil()
+	{
+		return View::make('usuarios.perfil');
+	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -130,7 +133,8 @@ class UsuarioController extends BaseController {
 				{
 					//mi sesión va a tener un usuario_id y un usuario_username , los valores se los asigna capturando los datos de la tupla $usuario
 					Session::put('usuario_id', $usuario->id);
-					Session::put('usuario_username', $usuario->username);					
+					Session::put('usuario_username', $usuario->username);
+					Session::put('usuario_email', $usuario->email);					
 					return Redirect::to('/bienvenida');
 				}
 				else

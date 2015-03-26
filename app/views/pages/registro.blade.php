@@ -17,7 +17,7 @@
           {{Form::label('username', 'Usuario',array('class' => 'col-lg-2 control-label'))}}
           <div class="col-lg-10">   
             {{Form::text('username')}}                           
-          </div>   
+          </div>   </br>
         </div>
 
         <!--Apellido-->
@@ -25,7 +25,7 @@
             {{Form::label('apellido', 'Apellido', array('class' => 'col-lg-2 control-label'))}}
           <div class="col-lg-10">    
                {{Form::text('apellido')}}
-          </div>   
+          </div>   </br>
         </div>
                                  
         <!--Mail-->
@@ -33,7 +33,7 @@
           {{Form::label('email', 'E-mail',array('class' => 'col-lg-2 control-label'))}}
           <div class="col-lg-10">
             {{Form::text('email')}}
-          </div>
+          </div></br>
         </div>
 
         <!-- Contraseña -->
@@ -41,7 +41,7 @@
   				{{Form::label('password', 'Contraseña', array('class' => 'col-lg-2 control-label'))}}
           <div class="col-lg-10">
             {{Form::password('password')}}
-				  </div>
+				  </div></br>
         </div>
 
 				<!--confirmacion password-->
@@ -49,7 +49,7 @@
           {{Form::label('verificacion', 'Repita la Contraseña', array('class' => 'col-lg-2 control-label'))}}
           <div class="col-lg-10">
             {{Form::password('verificacion')}}
-			      </div>
+			      </div></br>
         </div>
 
         <!--Fecha de Nacimiento-->                  
@@ -57,7 +57,7 @@
           <label for="inputFecha" class="col-lg-2 control-label">Fecha de Nacimiento</label>
           <div class="col-lg-5">
               <input class="form-control" id="dateFecha" type="date" name="nacimiento" >
-          </div>
+          </div></br>
         </div>
              
         <!--Sexo-->
@@ -67,7 +67,7 @@
             {{Form::radio('sexo', 'femenino', 'selected')}}           
             {{Form::label('sexo', 'Masculino')}}                      
             {{Form::radio('sexo', 'masculino')}}
-          </div>
+          </div></br>
         </div>
 
         <!--Provincias-->
@@ -101,23 +101,23 @@
                 <option value="Tierra del Fuego">Tierra del Fuego</option>
                 <option value="Tucumán">Tucumán</option>
               </select>
-            </div>     
-          </div>
-        </div>
+            </div>  </br>   
+          </div></br>
+        </div></br>
               
         <!--Ciudad-->                 
         <div class="form-group">
           <div class="col-lg-10">
             {{Form::label('ciudad', 'Ciudad', array('class' => 'col-lg-2 control-label'))}}
             {{Form::text('ciudad')}}
-          </div>
+          </div></br>
         </div>
 
         <!--Textarea-->
         <div class="col-lg-10">
           <div class="form-group">
             <label for="textArea" class="col-lg-2 control-label">Terminos y Condiciones </br></label>
-            <div class="col-lg-5">
+            <div class="col-lg-10">
               <textarea class="form-control " rows="5" id="textArea" disabled="disabled">TERMINOS Y CONDICIONES
 La utilización de nuestro sitio implica su aceptación plena y sinreservas a todas y cada una de las disposiciones incluidas en este Aviso Legal, por lo que si usted no está de acuerdo con cualquiera de las condiciones aquí establecidas, no deberá usar u/o acceder a este sitio.
 Reservamos el derecho a modificar esta Declaración de Privacidad en cualquier momento. Su uso continuo de cualquier porción de este sitio tras la notificación o anuncio de tales modificaciones constituirá su aceptación de tales cambios

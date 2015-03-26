@@ -51,7 +51,7 @@
       				<img src="img/c1.png" alt="...">
       				<div class="caption" align="center">
         				<h3>ORGANIZÁ RAPIDO Y FACIL!</h3>
-        				<p>Ahorrá tiempo! Porque con Meating calculamos todo y lo haces en un touch!</p>
+        				<p>Ahorrá tiempo! Porque con AdE calculamos todo y lo haces en un touch!</p>
         				<p><a href="Registro.php" class="btn btn-primary" role="button">Registrate Ahora!</a> </p>
       				</div>
     			</div>

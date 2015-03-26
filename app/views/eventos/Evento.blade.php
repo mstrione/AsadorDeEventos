@@ -7,6 +7,7 @@
     {{ HTML::script('js/MapaEvento.js') }}
     {{ HTML::style('css/datepicker.css') }} 
     {{ HTML::style('css/EstiloMapa.css') }}
+    <script src="js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script >google.maps.event.addDomListener(window, 'load', initialize);  
     </script>
@@ -184,7 +185,8 @@ $(window).on("resize", function () {
                 <tbody>
                     @foreach($listaDeInvitados as $invitado)
                     <tr>   
-                        <td>{{$invitado->idusuario}}</td>
+                    <?php $Ninvitado=Usuario::find($invitado->idusuario)?>
+                        <td>{{$Ninvitado->username}}</td>
                         <td>{{$invitado->confirmado}}</td>
                         <td>{{$invitado->adultos}}</td>
                         <td>{{$invitado->menores}}</td>
@@ -203,8 +205,72 @@ $(window).on("resize", function () {
             <a href="#" class="btn btn-primary btn-sm">Enviar invitacion a no notificacion</a>
             <a href="#" class="btn btn-primary btn-sm">Reenviar invitacion a no confirmados</a>
             <a href="#" class="btn btn-primary btn-sm">Enviar Cuentas a Asistentes</a>
+        
+
+            <!-- PARTE DE LAS CUENTAS Form::checkbox('name', 'value');-->
+            <div class="col-lg-6 col-lg-offset-0">
+                <form class="bs-component">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">CUENTAS</h3>
+                        </div>    
+                        <div >
+                            <div>
+                            {{ Form::radio('metodo', '1', (Input::old('metodo') == '1'))}}    
+                            {{Form::label('El organizador invita')}}    
+                                
+                            </div>
+                            
+                            <div>
+                            {{Form::radio('metodo', '2', (Input::old('metodo') == '2'))}}
+                            {{Form::label('Se establece un valor fijo')}}               
+                            </div>
+                           {{--   <div>
+                            {{Form::radio('metodo', '2', (Input::old('metodo') == '2'), array('id'=>'female', 'class'=>'accordion-header'))}}
+                            {{Form::label('Se establece un valor fijo')}}               
+                            </div> --}}
+                            
+                            <div>
+                            {{ Form::radio('metodo', '3', (Input::old('metodo') == '3'))}}    
+                            {{Form::label('Se establece un valor fijo por asistente')}}             
+                            </div>
+                            
+                            <div>
+                            {{Form::radio('metodo', '4', (Input::old('metodo') == '4'))}}
+                            {{Form::label('Se divide lo gastado en partes iguales')}}               
+                            </div>
+                            
+                            <div>
+                            {{Form::radio('metodo', '5', (Input::old('metodo') == '5'))}} 
+                            {{Form::label('Se divide lo gastado según asistentes')}}
+                            
+                            </div>
+                            
+                            <div>
+                            {{Form::radio('metodo', '6', (Input::old('metodo') == '6'))}}
+                            {{Form::label('Se divide un valor arbitrario en partes iguales')}}              
+                            </div>
+                            
+                            <div>
+                            {{Form::radio('metodo', '7', (Input::old('metodo') == '7'))}}
+                            {{Form::label('Se divide un valor arbitrario según asistentes')}}               
+                            </div>
+                        </div>
+                    </div>
+                </form>                        
+            </div>
+            <div class="col-lg-6 col-lg-offset-0">
+                <form class="bs-component">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                        </div>
+                    </div>
+                </form>
+            </div>    
         </div>
     </div>
+
+    
 
     
 </body>
@@ -213,7 +279,7 @@ $(window).on("resize", function () {
         <footer id="mainFooter">
             <div class="wrapped" align="center"> <!--Anclamos un footer abajo del todo de la pagina-->
                 <p class="pull-right"><a id="goTop" href="#"><h3> ^ </h3></a></p> <!--con ese icono nos lleva hacia arriba de la pagina-->
-                <p>© 2015 Asador De Eventos   ·  <a href="ruta de privacidad y terminos">Privacidad y Términos</a> · Seguinos en <!--nos va a llevar a los links mencionados abajo a traves de los iconos-imagenes-->
+                <p>© 2015 Asador De Eventos   ·  <a href="/terminos">Privacidad y Términos</a> · Seguinos en <!--nos va a llevar a los links mencionados abajo a traves de los iconos-imagenes-->
                     <a href="http://facebook.com"><img src="../img/f1.png" height='30' width='70'></a> | 
                     <a href="http://twitter.com"><img src="../img/t1.png" height='30' width='70'></a> |
                     <a href="http://plus.google.com/share"><img src="../img/g1.png" height='30' width='70'></a>
