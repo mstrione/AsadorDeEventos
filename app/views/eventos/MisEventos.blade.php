@@ -75,7 +75,7 @@
                         <td>{{$value->direccion}}</td>
                         <td>{{$value->fecha}}</td>
                         <td>{{{$usuarios->username }}}</td> 
-                        <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button></td>
+                        <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button></td>
                     </tr>
                 @endif
                 @endforeach
@@ -83,6 +83,44 @@
             </table>
         </div>
     </div>
+
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'InvitadoController@invitar' , 'role' => 'form'))}}
+                                <fieldset>
+                                    <legend>Acciones</legend>
+
+                                    {{ Form::label('Asistir','Asistir',array('id'=>'','class'=>'')) }}
+                                    {{ Form::select('asistencia',array('indeterminado'=>'No Se', 'sivoy'=>'Si','novoy'=>'No'),'indeterminado') }}
+
+                                    <div class="form-group" >
+                                      <label for="inputEmail" class="col-lg-5 control-label">adultos</label>
+                                      <div class="col-lg-2">
+                                        <input type="text" class="form-control"  name="adultos" >
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="inputPassword" class="col-lg-5 control-label">niños</label>
+                                      <div class="col-lg-2">
+                                        <input type="text" class="form-control"  name="niños" >
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <div class="col-lg-6 col-lg-offset-2">
+                                        <p>{{Form::submit('Enviar', array('class' => 'btn btn-default'))}}</p>
+                                      </div>
+                                    </div>
+                                </fieldset>
+                            {{Form::close()}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
     <script >
     function VerEvento(idevento)
     {

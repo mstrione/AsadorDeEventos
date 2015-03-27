@@ -186,7 +186,7 @@
                     <tr>   
                     <?php $Ninvitado=Usuario::find($invitado->idusuario)?>
                         <td>{{$Ninvitado->username}}</td>
-                        <td>{{$invitado->confirmado}}</td>
+                        <td>{{$invitado->confirmado}}</td> {{-- cero es que no 1 es que si --}}
                         <td>{{$invitado->adultos}}</td>
                         <td>{{$invitado->menores}}</td>
                         @if(Session::has('usuario_id')==$TEvento->creador)
@@ -205,7 +205,9 @@
             <a href="#" class="btn btn-primary btn-sm">Reenviar invitacion a no confirmados</a>
             <a href="#" class="btn btn-primary btn-sm">Enviar Cuentas a Asistentes</a>
         
-
+            <div class="page-header">
+                <legend><h1 id="navbar">Cuentas</h1></legend>
+            </div>
             <!-- PARTE DE LAS CUENTAS Form::checkbox('name', 'value');-->
             <div class="col-lg-6 col-lg-offset-0">
                 <form class="bs-component">
@@ -372,7 +374,10 @@
                         </div><br><br>
                     </div>
                 </form>
-            </div>    
+            </div>  
+            <div class="page-header">
+                <legend><h1 id="navbar">Fotos</h1></legend>
+            </div>  
         </div>
     </div>
 
