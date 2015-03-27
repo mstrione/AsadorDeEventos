@@ -5,24 +5,25 @@
     {{ HTML::style('css/vallenato.css') }}
     {{ HTML::script('js/datepicker.js') }}
     {{ HTML::script('js/MapaEvento.js') }}
+    {{ HTML::script('js/cuentas.js') }}
     {{ HTML::style('css/datepicker.css') }} 
     {{ HTML::style('css/EstiloMapa.css') }}
     <script src="js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script >google.maps.event.addDomListener(window, 'load', initialize);  
     </script>
-    <script>function centerModal() {
-    $(this).css('display', 'block');
-    var $dialog = $(this).find(".modal-dialog");
-    var offset = ($(window).height() - $dialog.height()) / 2;
-    // Center modal vertically in window
-    $dialog.css("margin-top", offset);
-}
+//     <script>function centerModal() {
+//     $(this).css('display', 'block');
+//     var $dialog = $(this).find(".modal-dialog");
+//     var offset = ($(window).height() - $dialog.height()) / 2;
+//     // Center modal vertically in window
+//     $dialog.css("margin-top", offset);
+// }
 
-$('.modal').on('show.bs.modal', centerModal);
-$(window).on("resize", function () {
-    $('.modal:visible').each(centerModal);
-});</script>
+// $('.modal').on('show.bs.modal', centerModal);
+// $(window).on("resize", function () {
+//     $('.modal:visible').each(centerModal);
+// });</script>
 @include('includes.headEventoX')
 </head>
 <body>
@@ -94,9 +95,7 @@ $(window).on("resize", function () {
                         <a href="#" class="btn btn-primary">Editar Evento</a>
                         @endif
 
-                        <button id="popup" onclick="div_show()">Popup</button>
 
-                        <!--pop up code -->
                     </form>                        
                 </div>
             </div>
@@ -216,13 +215,13 @@ $(window).on("resize", function () {
                         </div>    
                         <div >
                             <div>
-                            {{ Form::radio('metodo', '1', (Input::old('metodo') == '1'))}}    
+                            {{ Form::radio('metodo', '1', (Input::old('metodo') == '1'), array('id' =>'radio' ,'onclick'=>'opcion1()'))}}    
                             {{Form::label('El organizador invita')}}    
                                 
                             </div>
                             
                             <div>
-                            {{Form::radio('metodo', '2', (Input::old('metodo') == '2'))}}
+                            {{Form::radio('metodo', '2', (Input::old('metodo') == '2'), array('id' =>'radio' ,'onclick'=>'opcion2()' ))}}
                             {{Form::label('Se establece un valor fijo')}}               
                             </div>
                            {{--   <div>
@@ -231,28 +230,28 @@ $(window).on("resize", function () {
                             </div> --}}
                             
                             <div>
-                            {{ Form::radio('metodo', '3', (Input::old('metodo') == '3'))}}    
+                            {{ Form::radio('metodo', '3', (Input::old('metodo') == '3'), array('id' =>'radio' ,'onclick'=>'opcion3()'  ))}}    
                             {{Form::label('Se establece un valor fijo por asistente')}}             
                             </div>
                             
                             <div>
-                            {{Form::radio('metodo', '4', (Input::old('metodo') == '4'))}}
+                            {{Form::radio('metodo', '4', (Input::old('metodo') == '4'), array('id' =>'radio' ,'onclick'=>'opcion4()' ))}}
                             {{Form::label('Se divide lo gastado en partes iguales')}}               
                             </div>
                             
                             <div>
-                            {{Form::radio('metodo', '5', (Input::old('metodo') == '5'))}} 
+                            {{Form::radio('metodo', '5', (Input::old('metodo') == '5'), array('id' =>'radio' ,'onclick'=>'opcion5()'  ))}} 
                             {{Form::label('Se divide lo gastado según asistentes')}}
                             
                             </div>
                             
                             <div>
-                            {{Form::radio('metodo', '6', (Input::old('metodo') == '6'))}}
+                            {{Form::radio('metodo', '6', (Input::old('metodo') == '6'), array('id' =>'radio' ,'onclick'=>'opcion6()'))}}
                             {{Form::label('Se divide un valor arbitrario en partes iguales')}}              
                             </div>
                             
                             <div>
-                            {{Form::radio('metodo', '7', (Input::old('metodo') == '7'))}}
+                            {{Form::radio('metodo', '7', (Input::old('metodo') == '7'), array('id' =>'radio' ,'onclick'=>'opcion7()'  ))}}
                             {{Form::label('Se divide un valor arbitrario según asistentes')}}               
                             </div>
                         </div>
@@ -263,7 +262,114 @@ $(window).on("resize", function () {
                 <form class="bs-component">
                     <div class="panel panel-info">
                         <div class="panel-heading">
+                            <h3 class="panel-title">Metodo</h3>
                         </div>
+                            <div class="miscuentas">
+                                {{-- opcion 1 --}}
+
+                                <div id="opcion1" style="">
+                                    <p>El organizador invita</p>
+                                    <div>
+                                        <input type="submit" value="Aceptar">
+                                    </div>
+                                </div>
+
+                                
+
+                                {{-- opcion 2 --}}
+
+                                <div id="opcion2" style="display:none">
+                                    <p>costo por invitado</p>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                          <input class="form-control"  name="valor" type="text">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <input type="submit" value="Aceptar">
+                                    </div>
+                                </div>
+
+                                {{-- opcion 3 --}}
+
+                                <div id="opcion3" style="display:none">
+                                    <p>costo por asistentes</p>
+                                    <div class="form-group">
+                                        <div class="col-lg-2">                                        
+                                          <input class="form-control"  name="adultos" type="text">{{Form::label('adultos')}}
+                                        </div>
+                                        <div class="col-lg-2">
+                                          <input class="form-control"  name="niños" type="text">{{Form::label('niños')}}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <input type="submit" value="Aceptar">
+                                    </div>
+                                </div>    
+
+                                {{-- opcion 4 --}}
+
+                                <div id="opcion4" style="display:none">
+                                    <div class="form-group">
+                                        <div class="col-lg-10">                                        
+                                          {{Form::label('Dividir lo gastado en partes iguales')}}
+                                        </div>
+                                        <div>
+                                            <input type="submit" value="Aceptar">
+                                        </div>
+                                    </div>                                    
+                                </div> 
+
+                                {{-- opcion 5 --}}
+
+                                <div id="opcion5" style="display:none">
+                                    <p>Dividir lo gastado segun los asistentes</p>
+                                    <div class="form-group">
+                                        <div class="col-lg-2">                                        
+                                          <input class="form-control"  name="adultos5" type="text">{{Form::label('adultos')}}
+                                        </div>
+                                        <div class="col-lg-2">
+                                          <input class="form-control"  name="niños5" type="text">{{Form::label('niños')}}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <input type="submit" value="Aceptar">
+                                    </div>                                   
+                                </div> 
+
+                                {{-- opcion 6 --}}
+
+                                <div id="opcion6" style="display:none">
+                                    <p>Valor a dividir en partes iguales</p>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                          <input class="form-control"  name="valor" type="text">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <input type="submit" value="Aceptar">
+                                    </div>
+                                </div>
+
+                                {{-- opcion 7 --}}
+
+                                <div id="opcion7" style="display:none">
+                                    <p>Se divide valor según asistentes</p>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            <input class="form-control"  name="valor" type="text"><br>
+
+                                            <div class="col-lg-2">                                        
+                                              <input class="form-control"  name="adultos7" type="text">{{Form::label('adultos')}}
+                                            </div>
+                                            <div class="col-lg-2">
+                                              <input class="form-control"  name="niños7" type="text">{{Form::label('niños')}}
+                                            </div>                                    
+                                            <input type="submit" value="Aceptar">
+                                        </div>
+                                    </div><br><br><br><br>
+                                </div>
+                        </div><br><br>
                     </div>
                 </form>
             </div>    
