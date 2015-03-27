@@ -77,6 +77,22 @@ class InvitadoController extends BaseController {
 		 		$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
 		 	 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
 		 }
+
+		 if(Input::get('opcionNum')=='3')
+		 {
+		 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
+		 	$valor=Input::get('valor');
+		 	foreach($listaDeInvitados as $usuario)
+		 	{
+		 		$Musuario = invitado::find($usuario->id);
+		 		$Musuario->costo=(($usuario->adultos)*Input::get('adultos'))+(($usuario->menores)*Input::get('niños'));
+		 		
+		 		$Musuario -> save();
+		 	}
+				$TEvento=Evento::find(Input::get('ideventoN'));
+		 		$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
+		 	 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+		 }
 	}
 
 
