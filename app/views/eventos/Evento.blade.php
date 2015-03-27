@@ -186,7 +186,12 @@
                     <tr>   
                     <?php $Ninvitado=Usuario::find($invitado->idusuario)?>
                         <td>{{$Ninvitado->username}}</td>
-                        <td>{{$invitado->confirmado}}</td> {{-- cero es que no 1 es que si --}}
+                        @if(($invitado->confirmado) ==1)
+                        
+                        <td class="glyphicon glyphicon-ok-sign"></td>
+                        @else
+                        <td class="glyphicon glyphicon-minus-sign"></td>
+                        @endif
                         <td>{{$invitado->adultos}}</td>
                         <td>{{$invitado->menores}}</td>
                         @if(Session::has('usuario_id')==$TEvento->creador)
