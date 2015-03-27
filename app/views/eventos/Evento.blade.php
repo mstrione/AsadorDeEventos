@@ -261,25 +261,28 @@
                 </form>                        
             </div>
             <div class="col-lg-6 col-lg-offset-0">
-                <form class="bs-component">
+                <div class="bs-component">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <h3 class="panel-title">Metodo</h3>
                         </div>
                             <div class="miscuentas">
                                 {{-- opcion 1 --}}
-
+                                {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'InvitadoController@cuenta' , 'role' => 'form'))}}
                                 <div id="opcion1" style="">
                                     <p>El organizador invita</p>
+                                    {{form::input('hidden','ideventoN',$TEvento->id)}}
+                                    {{form::input('hidden','opcionNum',1)}}
                                     <div>
                                         <input type="submit" value="Aceptar">
                                     </div>
                                 </div>
+                                {{Form::close()}}
 
                                 
 
-                                {{-- opcion 2 --}}
-
+                                {{-- opcion 2 se establece un costo fijo--}}
+                                {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'InvitadoController@cuenta' , 'role' => 'form'))}}
                                 <div id="opcion2" style="display:none">
                                     <p>costo por invitado</p>
                                     <div class="form-group">
@@ -287,13 +290,16 @@
                                           <input class="form-control"  name="valor" type="text">
                                         </div>
                                     </div>
+                                    {{form::input('hidden','ideventoN',$TEvento->id)}}
+                                    {{form::input('hidden','opcionNum',2)}}
                                     <div>
                                         <input type="submit" value="Aceptar">
                                     </div>
                                 </div>
+                                {{Form::close()}}
 
                                 {{-- opcion 3 --}}
-
+                                {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'InvitadoController@cuenta' , 'role' => 'form'))}}
                                 <div id="opcion3" style="display:none">
                                     <p>costo por asistentes</p>
                                     <div class="form-group">
@@ -304,13 +310,16 @@
                                           <input class="form-control"  name="niños" type="text">{{Form::label('niños')}}
                                         </div>
                                     </div>
+                                    {{form::input('hidden','ideventoN',$TEvento->id)}}
+                                    {{form::input('hidden','opcionNum',3)}}
                                     <div>
                                         <input type="submit" value="Aceptar">
                                     </div>
-                                </div>    
+                                </div>
+                                {{Form::close()}}   
 
                                 {{-- opcion 4 --}}
-
+                                {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'InvitadoController@cuenta' , 'role' => 'form'))}}
                                 <div id="opcion4" style="display:none">
                                     <div class="form-group">
                                         <div class="col-lg-10">                                        
@@ -321,9 +330,10 @@
                                         </div>
                                     </div>                                    
                                 </div> 
+                                {{Form::close()}}
 
                                 {{-- opcion 5 --}}
-
+                                {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'InvitadoController@cuenta' , 'role' => 'form'))}}
                                 <div id="opcion5" style="display:none">
                                     <p>Dividir lo gastado segun los asistentes</p>
                                     <div class="form-group">
@@ -337,10 +347,11 @@
                                     <div>
                                         <input type="submit" value="Aceptar">
                                     </div>                                   
-                                </div> 
+                                </div>
+                                {{Form::close()}} 
 
                                 {{-- opcion 6 --}}
-
+                                {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'InvitadoController@cuenta' , 'role' => 'form'))}}
                                 <div id="opcion6" style="display:none">
                                     <p>Valor a dividir en partes iguales</p>
                                     <div class="form-group">
@@ -352,9 +363,10 @@
                                         <input type="submit" value="Aceptar">
                                     </div>
                                 </div>
+                                {{Form::close()}}
 
                                 {{-- opcion 7 --}}
-
+                                {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'InvitadoController@cuenta' , 'role' => 'form'))}}
                                 <div id="opcion7" style="display:none">
                                     <p>Se divide valor según asistentes</p>
                                     <div class="form-group">
@@ -371,9 +383,10 @@
                                         </div>
                                     </div><br><br><br><br>
                                 </div>
+                                {{Form::close()}}
                         </div><br><br>
                     </div>
-                </form>
+                </div>
             </div>  
             <div class="page-header">
                 <legend><h1 id="navbar">Fotos</h1></legend>

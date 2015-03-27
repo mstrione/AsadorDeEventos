@@ -22,6 +22,7 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    {{ HTML::script('js/FuncionesDeMisEventos.js') }}
 
 </head>
 <body>
@@ -75,7 +76,7 @@
                         <td>{{$value->direccion}}</td>
                         <td>{{$value->fecha}}</td>
                         <td>{{{$usuarios->username }}}</td> 
-                        <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button></td>
+                        <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button></td>
                     </tr>
                 @endif
                 @endforeach
@@ -88,24 +89,24 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-body">
-                            {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'InvitadoController@invitar' , 'role' => 'form'))}}
+                            {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'MisEventosController@asistencia' , 'role' => 'form'))}}
                                 <fieldset>
                                     <legend>Acciones</legend>
 
                                     {{ Form::label('Asistir','Asistir',array('id'=>'','class'=>'')) }}
-                                    {{ Form::select('asistencia',array('indeterminado'=>'No Se', 'sivoy'=>'Si','novoy'=>'No'),'indeterminado') }}
+                                    {{ Form::select('asistencia',array('indeterminado'=>'No Se', 'si'=>'Si','no'=>'No'),'indeterminado',array('onChange'=>'Asistencia()','id'=>'asistencia') )}}
 
                                     <div class="form-group" >
                                       <label for="inputEmail" class="col-lg-5 control-label">adultos</label>
                                       <div class="col-lg-2">
-                                        <input type="text" class="form-control"  name="adultos" >
+                                        <input type="text" class="form-control"  id="AsistenciaAdultos" disabled="true">
                                       </div>
                                     </div>
 
                                     <div class="form-group">
                                       <label for="inputPassword" class="col-lg-5 control-label">niños</label>
                                       <div class="col-lg-2">
-                                        <input type="text" class="form-control"  name="niños" >
+                                        <input type="text" class="form-control"  id="AsistenciaNiños" >
                                       </div>
                                     </div>
 
@@ -114,6 +115,7 @@
                                         <p>{{Form::submit('Enviar', array('class' => 'btn btn-default'))}}</p>
                                       </div>
                                     </div>
+                                    <input type="hidden" value="" id="iddelevento" />
                                 </fieldset>
                             {{Form::close()}}
                         </div>

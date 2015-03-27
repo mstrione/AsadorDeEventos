@@ -9,5 +9,10 @@ class MisEventosController extends BaseController {
 		return View::make('eventos.MisEventos',array('listaDeEventos'=>$listaDeEventos,'listaDeInvitados'=>$listaDeInvitados)); //devuelve la vista de MisEventos con el valos 'lista de eventos'
 
 	}
+	public function asistencia($id)
+	{
+		
+		return View::make('eventos.MisEventos');
+	}
 
 }
