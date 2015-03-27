@@ -325,6 +325,8 @@
                                         <div class="col-lg-10">                                        
                                           {{Form::label('Dividir lo gastado en partes iguales')}}
                                         </div>
+                                        {{form::input('hidden','ideventoN',$TEvento->id)}}
+                                    {{form::input('hidden','opcionNum',4)}}
                                         <div>
                                             <input type="submit" value="Aceptar">
                                         </div>
