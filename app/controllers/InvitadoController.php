@@ -126,7 +126,6 @@ class InvitadoController extends BaseController {
 		 	$PNiño=Input::get('niños5');
 		 	$CantAdultos=0;
 		 	$CantNiños=0;
-		 	$nulo=0;
 		 	foreach($listaDeInvitados as $usuario)
 		 	{
 		 		$gasto=$gasto+($usuario->gasto);
@@ -145,7 +144,7 @@ class InvitadoController extends BaseController {
 		 		$GastoPorAdulto=0;
 		 	}
 		 	
-		 	if($CantNiños!=$nulo)
+		 	if($CantNiños!=0)
 		 	{
 
 		 		$GastoPorNiño=$gasto*$PNiño/100;
@@ -189,6 +188,55 @@ class InvitadoController extends BaseController {
 		 	$TEvento=Evento::find(Input::get('ideventoN'));
 		 		$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
 		 	 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+		 }
+		 if(Input::get('opcionNum')==7)
+		 {
+		 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
+		 	$valor=Input::get('valor');
+		 	$PAdulto=Input::get('adultos7');
+		 	$PNiño=Input::get('niños7');
+		 	$CantNiños=0;
+		 	$CantAdultos=0;
+		 	$GastoPorAdulto=0;
+		 	$GastoPorNiño=0;
+
+		 	foreach($listaDeInvitados as $usuario)
+		 	{
+		 		$CantNiños=$CantNiños+$usuario->menores;
+		 		$CantAdultos=$CantAdultos+$usuario->adultos;
+		 	}
+
+		 	if($CantAdultos!=0)
+		 	{
+		 		$GastoPorAdulto=$valor*$PAdulto/100;
+		 		$GastoPorAdulto=round($GastoPorAdulto/$CantAdultos);
+		 	}
+		 	else
+		 	{
+		 		$GastoPorAdulto=0;
+		 	}
+		 	
+		 	if($CantNiños!=0)
+		 	{
+
+		 		$GastoPorNiño=$valor*$PNiño/100;
+		 		$GastoPorNiño=round($GastoPorNiño/$CantNiños);
+		 	}else
+		 	{
+		 		$GastoPorNiño=0;
+		 	}
+
+		 	foreach($listaDeInvitados as $usuario)
+			{
+				$Musuario = invitado::find($usuario->id);
+				//$Musuario->costo=(($usuario->adultos)*$valor)+(($usuario->menores)*$valor);
+				$Musuario->costo=(($usuario->adultos)*$GastoPorAdulto)+(($usuario->menores)*$GastoPorNiño);
+				$Musuario-> save();
+			}
+				$TEvento=Evento::find(Input::get('ideventoN'));
+		 		$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
+		 	 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+
 		 }
 	}
 

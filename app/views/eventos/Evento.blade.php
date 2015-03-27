@@ -384,7 +384,9 @@
                                             </div>
                                             <div class="col-lg-2">
                                               <input class="form-control"  name="niños7" type="text">{{Form::label('niños')}}
-                                            </div>                                    
+                                            </div>
+                                            {{form::input('hidden','ideventoN',$TEvento->id)}}
+                                            {{form::input('hidden','opcionNum',7)}}                                    
                                             <input type="submit" value="Aceptar">
                                         </div>
                                     </div><br><br><br><br>
