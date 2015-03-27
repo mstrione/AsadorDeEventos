@@ -326,7 +326,7 @@
                                           {{Form::label('Dividir lo gastado en partes iguales')}}
                                         </div>
                                         {{form::input('hidden','ideventoN',$TEvento->id)}}
-                                    {{form::input('hidden','opcionNum',4)}}
+                                        {{form::input('hidden','opcionNum',4)}}
                                         <div>
                                             <input type="submit" value="Aceptar">
                                         </div>
@@ -346,6 +346,8 @@
                                           <input class="form-control"  name="niños5" type="text">{{Form::label('niños')}}
                                         </div>
                                     </div>
+                                    {{form::input('hidden','ideventoN',$TEvento->id)}}
+                                    {{form::input('hidden','opcionNum',5)}}
                                     <div>
                                         <input type="submit" value="Aceptar">
                                     </div>                                   
