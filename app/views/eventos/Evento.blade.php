@@ -193,7 +193,7 @@
                         <td>{{$invitado->notificado}}</td>
                         <td>{{$invitado->gasto}}</td>
                         <td>{{$invitado->costo}}</td>
-                        <td>#</td>
+                        <td>{{$invitado->balance}}</td>
                         <td>#</td>
                         <td>#</td>
                         @endif

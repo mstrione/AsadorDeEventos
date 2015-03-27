@@ -30,6 +30,7 @@ class Invitados extends Migration {
 			$table->boolean('notificado');
 			$table->double('costo');
 			$table->double('gasto');
+			$table->double('balance');
 			
 			
 			$table->timestamps();

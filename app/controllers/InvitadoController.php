@@ -49,12 +49,14 @@ class InvitadoController extends BaseController {
 	{
 		if(Input::get('opcionNum')=='1')
 		{
+			$balance=0;
 			$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
 			foreach($listaDeInvitados as $usuario)
 			{
 				$Musuario = invitado::find($usuario->id);
 				//$Musuario->costo=(($usuario->adultos)*$valor)+(($usuario->menores)*$valor);
 				$Musuario->costo=0;
+				$Musuario->balance=($Musuario->costo)-($usuario->gasto);
 				$Musuario-> save();
 			}
 				$TEvento=Evento::find(Input::get('ideventoN'));
@@ -64,6 +66,7 @@ class InvitadoController extends BaseController {
 		
 		 if(Input::get('opcionNum')=='2')
 		 {
+		 	$balance=0;
 		 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
 		 	$valor=Input::get('valor');
 		 	foreach($listaDeInvitados as $usuario)
@@ -71,6 +74,7 @@ class InvitadoController extends BaseController {
 		 		$Musuario = invitado::find($usuario->id);
 		 		//$Musuario->costo=(($usuario->adultos)*$valor)+(($usuario->menores)*$valor);
 		 		$Musuario->costo=$valor;
+		 		$Musuario->balance=($Musuario->costo)-($usuario->gasto);
 		 		$Musuario -> save();
 		 	}
 				$TEvento=Evento::find(Input::get('ideventoN'));
@@ -80,13 +84,14 @@ class InvitadoController extends BaseController {
 
 		 if(Input::get('opcionNum')=='3')
 		 {
+		 	$balance=0;
 		 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
 		 	$valor=Input::get('valor');
 		 	foreach($listaDeInvitados as $usuario)
 		 	{
 		 		$Musuario = invitado::find($usuario->id);
 		 		$Musuario->costo=(($usuario->adultos)*Input::get('adultos'))+(($usuario->menores)*Input::get('niños'));
-		 		
+		 		$Musuario->balance=($Musuario->costo)-($usuario->gasto);
 		 		$Musuario -> save();
 		 	}
 				$TEvento=Evento::find(Input::get('ideventoN'));
@@ -99,6 +104,7 @@ class InvitadoController extends BaseController {
 		 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();		 	
 		 	$gasto=0;
 		 	$contador=0;
+		 	$balance=0;
 		 	foreach($listaDeInvitados as $usuario)
 		 	{
 		 		$gasto=$gasto+($usuario->gasto);
@@ -108,6 +114,7 @@ class InvitadoController extends BaseController {
 		 	{
 		 		$Musuario = invitado::find($usuario->id);
 		 		$Musuario->costo=$gasto/$contador;
+		 		$Musuario->balance=($Musuario->costo)-($usuario->gasto);
 		 		$Musuario->save();
 
 		 	}
@@ -159,6 +166,7 @@ class InvitadoController extends BaseController {
 				$Musuario = invitado::find($usuario->id);
 				//$Musuario->costo=(($usuario->adultos)*$valor)+(($usuario->menores)*$valor);
 				$Musuario->costo=(($usuario->adultos)*$GastoPorAdulto)+(($usuario->menores)*$GastoPorNiño);
+				$Musuario->balance=($Musuario->costo)-($usuario->gasto);
 				$Musuario-> save();
 			}
 				$TEvento=Evento::find(Input::get('ideventoN'));
@@ -182,7 +190,8 @@ class InvitadoController extends BaseController {
 		 	foreach ($listaDeInvitados as $usuario) 
 		 	{
 		 		$Musuario = invitado::find($usuario->id);
-		 		$Musuario->costo=$costo;		 		
+		 		$Musuario->costo=$costo;
+		 		$Musuario->balance=($Musuario->costo)-($usuario->gasto);		 		
 		 		$Musuario -> save();
 		 	}
 		 	$TEvento=Evento::find(Input::get('ideventoN'));
@@ -231,6 +240,7 @@ class InvitadoController extends BaseController {
 				$Musuario = invitado::find($usuario->id);
 				//$Musuario->costo=(($usuario->adultos)*$valor)+(($usuario->menores)*$valor);
 				$Musuario->costo=(($usuario->adultos)*$GastoPorAdulto)+(($usuario->menores)*$GastoPorNiño);
+				$Musuario->balance=($Musuario->costo)-($usuario->gasto);
 				$Musuario-> save();
 			}
 				$TEvento=Evento::find(Input::get('ideventoN'));
