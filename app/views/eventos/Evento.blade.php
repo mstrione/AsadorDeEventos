@@ -363,6 +363,8 @@
                                           <input class="form-control"  name="valor" type="text">
                                         </div>
                                     </div>
+                                    {{form::input('hidden','ideventoN',$TEvento->id)}}
+                                    {{form::input('hidden','opcionNum',6)}}
                                     <div>
                                         <input type="submit" value="Aceptar">
                                     </div>
