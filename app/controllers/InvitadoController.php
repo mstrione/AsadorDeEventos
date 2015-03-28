@@ -50,8 +50,8 @@ class InvitadoController extends BaseController {
 		if(Input::get('opcionNum')=='1')
 		{
 			$balance=0;
-			$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
-			foreach($listaDeInvitados as $usuario)
+			$listaDeInvitadosA=Invitado::where('idevento','=',Input::get('ideventoN'))->where('confirmado','=','1')->get();
+			foreach($listaDeInvitadosA as $usuario)
 			{
 				$Musuario = invitado::find($usuario->id);
 				//$Musuario->costo=(($usuario->adultos)*$valor)+(($usuario->menores)*$valor);
@@ -67,9 +67,9 @@ class InvitadoController extends BaseController {
 		 if(Input::get('opcionNum')=='2')
 		 {
 		 	$balance=0;
-		 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
+		 	$listaDeInvitadosA=Invitado::where('idevento','=',Input::get('ideventoN'))->where('confirmado','=','1')->get();
 		 	$valor=Input::get('valor');
-		 	foreach($listaDeInvitados as $usuario)
+		 	foreach($listaDeInvitadosA as $usuario)
 		 	{
 		 		$Musuario = invitado::find($usuario->id);
 		 		//$Musuario->costo=(($usuario->adultos)*$valor)+(($usuario->menores)*$valor);
@@ -85,9 +85,9 @@ class InvitadoController extends BaseController {
 		 if(Input::get('opcionNum')=='3')
 		 {
 		 	$balance=0;
-		 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
+		 	$listaDeInvitadosA=Invitado::where('idevento','=',Input::get('ideventoN'))->where('confirmado','=','1')->get();
 		 	$valor=Input::get('valor');
-		 	foreach($listaDeInvitados as $usuario)
+		 	foreach($listaDeInvitadosA as $usuario)
 		 	{
 		 		$Musuario = invitado::find($usuario->id);
 		 		$Musuario->costo=(($usuario->adultos)*Input::get('adultos'))+(($usuario->menores)*Input::get('niños'));
@@ -101,16 +101,16 @@ class InvitadoController extends BaseController {
 
 		 if(Input::get('opcionNum')=='4')
 		 {
-		 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();		 	
+		 	$listaDeInvitadosA=Invitado::where('idevento','=',Input::get('ideventoN'))->where('confirmado','=','1')->get();		 	
 		 	$gasto=0;
 		 	$contador=0;
 		 	$balance=0;
-		 	foreach($listaDeInvitados as $usuario)
+		 	foreach($listaDeInvitadosA as $usuario)
 		 	{
 		 		$gasto=$gasto+($usuario->gasto);
 		 		$contador=$contador+1;
 		 	}
-		 	foreach ($listaDeInvitados as $usuario ) 
+		 	foreach ($listaDeInvitadosA as $usuario ) 
 		 	{
 		 		$Musuario = invitado::find($usuario->id);
 		 		$Musuario->costo=$gasto/$contador;
@@ -126,14 +126,14 @@ class InvitadoController extends BaseController {
 		 }
 		 if(Input::get('opcionNum')=='5')
 		 {
-		 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
+		 	$listaDeInvitadosA=Invitado::where('idevento','=',Input::get('ideventoN'))->where('confirmado','=','1')->get();
 		 	$gasto=0;
 		 	$contador=0;
 		 	$PAdulto=Input::get('adultos5');
 		 	$PNiño=Input::get('niños5');
 		 	$CantAdultos=0;
 		 	$CantNiños=0;
-		 	foreach($listaDeInvitados as $usuario)
+		 	foreach($listaDeInvitadosA as $usuario)
 		 	{
 		 		$gasto=$gasto+($usuario->gasto);
 		 		$contador=$contador+1;
@@ -161,7 +161,7 @@ class InvitadoController extends BaseController {
 		 		$GastoPorNiño=0;
 		 	}
 
-		 	foreach($listaDeInvitados as $usuario)
+		 	foreach($listaDeInvitadosA as $usuario)
 			{
 				$Musuario = invitado::find($usuario->id);
 				//$Musuario->costo=(($usuario->adultos)*$valor)+(($usuario->menores)*$valor);
@@ -178,8 +178,8 @@ class InvitadoController extends BaseController {
 		 	$valor=Input::get('valor');
 		 	$costo=0;
 		 	$contador=0;
-		 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
-		 	foreach ($listaDeInvitados as $usuario)
+		 	$listaDeInvitadosA=Invitado::where('idevento','=',Input::get('ideventoN'))->where('confirmado','=','1')->get();;
+		 	foreach ($listaDeInvitadosA as $usuario)
 		 	{
 		 		$contador=$contador+1;
 		 	}
@@ -187,7 +187,7 @@ class InvitadoController extends BaseController {
 		 	{
 		 		$costo=round($valor/$contador);
 		 	}
-		 	foreach ($listaDeInvitados as $usuario) 
+		 	foreach ($listaDeInvitadosA as $usuario) 
 		 	{
 		 		$Musuario = invitado::find($usuario->id);
 		 		$Musuario->costo=$costo;
@@ -200,7 +200,7 @@ class InvitadoController extends BaseController {
 		 }
 		 if(Input::get('opcionNum')==7)
 		 {
-		 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
+		 	$listaDeInvitadosA=Invitado::where('idevento','=',Input::get('ideventoN'))->where('confirmado','=','1')->get();
 		 	$valor=Input::get('valor');
 		 	$PAdulto=Input::get('adultos7');
 		 	$PNiño=Input::get('niños7');
@@ -209,7 +209,7 @@ class InvitadoController extends BaseController {
 		 	$GastoPorAdulto=0;
 		 	$GastoPorNiño=0;
 
-		 	foreach($listaDeInvitados as $usuario)
+		 	foreach($listaDeInvitadosA as $usuario)
 		 	{
 		 		$CantNiños=$CantNiños+$usuario->menores;
 		 		$CantAdultos=$CantAdultos+$usuario->adultos;
@@ -235,7 +235,7 @@ class InvitadoController extends BaseController {
 		 		$GastoPorNiño=0;
 		 	}
 
-		 	foreach($listaDeInvitados as $usuario)
+		 	foreach($listaDeInvitadosA as $usuario)
 			{
 				$Musuario = invitado::find($usuario->id);
 				//$Musuario->costo=(($usuario->adultos)*$valor)+(($usuario->menores)*$valor);

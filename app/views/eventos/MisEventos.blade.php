@@ -23,6 +23,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     {{ HTML::script('js/FuncionesDeMisEventos.js') }}
+    {{ HTML::script('js/jquery-2.1.1.js') }}
 
 </head>
 <body>
@@ -76,7 +77,8 @@
                         <td>{{$value->direccion}}</td>
                         <td>{{$value->fecha}}</td>
                         <td>{{{$usuarios->username }}}</td> 
-                        <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button></td>
+                        <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button>
+                        <button class="btn btn-danger"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-cutlery" ></span></button></td>
                     </tr>
                 @endif
                 @endforeach
@@ -84,6 +86,33 @@
             </table>
         </div>
     </div>
+     <div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'MisEventosController@gastos' , 'role' => 'form'))}}
+                                <fieldset>
+                                    <legend>Gastos Realizados</legend>
+                                    <div class="form-group" >
+                                      <label for="inputEmail" class="col-lg-5 control-label">$ </label>
+                                      <div class="col-lg-2">
+                                        <input type="text" class="form-control" name="MisGastos"  id="MisGastos" >
+                                      </div>
+                                    </div>
+                                    <input type="hidden" value="" id="iddelevento2" name="iddelevento">
+                                    <input type="hidden" value="{{Session::get('usuario_id')}}" name="myuser">
+
+                                    <div class="form-group">
+                                      <div class="col-lg-6 col-lg-offset-2">
+                                        {{Form::submit('Enviar2', array('class' => 'btn btn-default'))}}
+                                      </div>
+                                    </div>
+                                </fieldset>
+                            {{Form::close()}}
+                        </div>
+                    </div>
+                </div>
+            </div> 
 
     <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -93,29 +122,30 @@
                                 <fieldset>
                                     <legend>Acciones</legend>
 
-                                    {{ Form::label('Asistir','Asistir',array('id'=>'','class'=>'')) }}
-                                    {{ Form::select('asistencia',array('indeterminado'=>'No Se', 'si'=>'Si','no'=>'No'),'indeterminado',array('onChange'=>'Asistencia()','id'=>'asistencia') )}}
+                                    {{ Form::label('Asistir','Asistir') }}
+                                    {{ Form::select('asistencia',array('indeterminado'=>'No Se', 'si'=>'Si','no'=>'No'),'indeterminado',array('onChange'=>'Asistencia()','id'=>'asistencia'))}}
 
                                     <div class="form-group" >
                                       <label for="inputEmail" class="col-lg-5 control-label">adultos</label>
                                       <div class="col-lg-2">
-                                        <input type="text" class="form-control"  id="AsistenciaAdultos" disabled="true">
+                                        <input type="text" class="form-control" name="AsistenciaAdultos"  id="AsistenciaAdultos" disabled="true">
                                       </div>
                                     </div>
 
                                     <div class="form-group">
                                       <label for="inputPassword" class="col-lg-5 control-label">niños</label>
                                       <div class="col-lg-2">
-                                        <input type="text" class="form-control"  id="AsistenciaNiños" >
+                                        <input type="text" class="form-control"  name="AsistenciaNiños" id="AsistenciaNiños" disabled="true">
                                       </div>
                                     </div>
+                                    <input type="hidden" value="" id="iddelevento" name="iddelevento">
+                                    <input type="hidden" value="{{Session::get('usuario_id')}}" name="myuser">
 
                                     <div class="form-group">
                                       <div class="col-lg-6 col-lg-offset-2">
-                                        <p>{{Form::submit('Enviar', array('class' => 'btn btn-default'))}}</p>
+                                        {{Form::submit('Enviar', array('class' => 'btn btn-default','id'=> 'aceptar','disabled'=>'true'))}}
                                       </div>
                                     </div>
-                                    <input type="hidden" value="" id="iddelevento" />
                                 </fieldset>
                             {{Form::close()}}
                         </div>

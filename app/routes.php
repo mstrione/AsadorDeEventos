@@ -36,12 +36,13 @@ Route::get('agregarinvitado', function()
 
 Route::get('crearEvento', 'EventoController@get_crearEvento');
 Route::post('crearEvento', 'EventoController@get_EventoX');
-Route::Post('/MisEventos','EventoController@get_EventoX');
+Route::post('/MisEventos','EventoController@get_EventoX');
 Route::get('/MisEventos/destroy/{id}','EventoController@destroy');
-Route::post('/MisEventos/{id}','MisEventosController@asistencia') ;
+Route::post('/MisEventos','MisEventosController@asistencia') ;
+Route::post('/MisEvento','MisEventosController@gastos'); 
 
 Route::get('/Evento/{idevento?}','EventoController@VerEvento');
-Route::post('/Evento/{idevento?}','InvitadoController@invitar');
+Route::post('/Evento','InvitadoController@invitar');
 Route::post('/Evento/{idevento?}','InvitadoController@cuenta');
 Route::get('/perfil','UsuarioController@MostralPerfil');
 Route::get('/terminos', 'HomeController@terminos');

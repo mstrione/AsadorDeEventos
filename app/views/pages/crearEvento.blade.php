@@ -19,7 +19,7 @@
 		    </div>    
 		</div>
 		<div class="jumbotron">
-			{{Form::open(array('method'=>'POST','Action'=> '/MisEventos' ,'role'=>'form','class'=>'form-horizontal'))}}
+			{{Form::open(array('method'=>'POST','Action'=> 'EventoController@get_EventoX' ,'role'=>'form','class'=>'form-horizontal'))}}
 			<fieldset>
 			<div class "row">
 				<div class="form-group" >
@@ -119,91 +119,7 @@
 {{Form::close()}}
 </div>
 	
-			<!-- PARTE DE LAS CUENTAS Form::checkbox('name', 'value');-->
-		
-<h1> CUENTAS </h1>		
-	
-	
-	
-	
-			<div class=accordion-container>
-				<div>
-				{{ Form::radio('metodo', '1', (Input::old('metodo') == '1'), array('id'=>'male', 'class'=>'accordion-header'))}}	
-				{{Form::label('El organizador invita')}}	
-					
-				</div>
-				
-				<div>
-				{{Form::radio('metodo', '2', (Input::old('metodo') == '2'), array('id'=>'female', 'class'=>'accordion-header'))}}
-				{{Form::label('Se establece un valor fijo')}}				
-				</div>
-				
-				<div>
-				{{ Form::radio('metodo', '3', (Input::old('metodo') == '3'), array('id'=>'male', 'class'=>'accordion-header'))}}	
-				{{Form::label('Se establece un valor fijo por asistente')}}				
-				</div>
-				
-				<div>
-				{{Form::radio('metodo', '4', (Input::old('metodo') == '4'), array('id'=>'female', 'class'=>'accordion-header'))}}
-				{{Form::label('Se divide lo gastado en partes iguales')}}				
-				</div>
-				
-				<div>
-				{{Form::radio('metodo', '5', (Input::old('metodo') == '5'), array('id'=>'male', 'class'=>'accordion-header'))}}	
-				{{Form::label('Se divide lo gastado según asistentes')}}
-				
-				</div>
-				
-				<div>
-				{{Form::radio('metodo', '6', (Input::old('metodo') == '6'), array('id'=>'female', 'class'=>'accordion-header'))}}
-				{{Form::label('Se divide un valor arbitrario en partes iguales')}}				
-				</div>
-				
-				<div>
-				{{Form::radio('metodo', '7', (Input::old('metodo') == '7'), array('id'=>'female', 'class'=>'accordion-header'))}}
-				{{Form::label('Se divide un valor arbitrario según asistentes')}}				
-				</div>
-			</div>
-	
-	
-	<!--
-	<ul >
-		<li class="accordion-container">
-		
-			<div input type="radio" class="accordion-header" name="" checked="true" value="0">El organizador invita</div>
-			<div class="accordion-content"><p>El evento no tiene costo alguno para los invitados</p></div>
-		</li>
-		<li class="accordion-container">
-			<div input type="radio" class="accordion-header" name="" checked="" value="1">Se establece un costo fijo segun asistente</div>
-			<div class="accordion-content"><p>Se distinguen dos valores fijos de costo para cada uno de los tipos de asistentes respectivamente, adultos y menores, tambien independientemente del costo total del evento.</p></div>
-		</li>
-		<li class="accordion-container">
-			<div input type="radio" class="accordion-header" name="" checked="" value="2">Se divide lo gastado en partes iguales</div>
-			<div class="accordion-content"><p>Se divide el costo total del evento entre todos los asistentes sin distincion alguna.</p></div>
-		</li>
-		<li class="accordion-container">
-			<div input type="radio" class="accordion-header" name="" checked="" value="3">Se divide lo gastado segun asistentes</div>
-			<div class="accordion-content"><p>Se establece un valor diferente de costo para cada uno de los tipos de asistentes, adultos y menores, estos valores se calculan a partir del costo total del evento, y un porcentaje de este correspondiente a los asistentes menores, segun se lo indique debajo.</p></div>
-		</li>
-		<li class="accordion-container">
-			<div input type="radio" class="accordion-header" name="" checked="" value="4">Se divide un valor fijo en partes iguales</div>
-			<div class="accordion-content"><p>Se divide un valor fijo que representa el costo total, entre todos los asistentes sin distincion alguna.</p></div>
-		</li>
-		<li class="accordion-container">
-			<div input type="radio" class="accordion-header" name="" checked="" value="5">Se divide un valor fijo segun asistente</div>
-			<div class="accordion-content"><p>Se establece un valor diferente de costo para cada uno de los tipos de asistentes, adultos y menores, estos valores se calculan a partir de un valor fijo que represental costo total del evento, y el costo correspondiente a los asistentes menores, se calculará como un porcentaje 
-									 	 del costo de un asistente adulto, segun se lo indique debajo.</p></div>
-		</li>
-	</ul>	
 			
-			
-			-->
-			
-			
-			
-			<!--PARTE DE LOS INVITADOS-->
-			
-	<h1>INVITADOS</h1>
 	<!--		
 	<div class="row">
 		<h2 class="inline">Invitados<a id="add-invitee" class="btn btn-success" href="#addInvitee"><i class="icon-plus"></i></a></h2>
