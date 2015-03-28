@@ -43,6 +43,6 @@ Route::post('/MisEvento','MisEventosController@gastos');
 
 Route::get('/Evento/{idevento?}','EventoController@VerEvento');
 Route::post('/Evento','InvitadoController@invitar');
-Route::post('/Evento/{idevento?}','InvitadoController@cuenta');
+Route::post('/Evento/','InvitadoController@cuenta');
 Route::get('/perfil','UsuarioController@MostralPerfil');
 Route::get('/terminos', 'HomeController@terminos');

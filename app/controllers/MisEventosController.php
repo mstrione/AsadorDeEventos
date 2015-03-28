@@ -65,7 +65,7 @@ class MisEventosController extends BaseController {
 	{
 		$iduser=Input::get('myuser');
 		$MisGastos=Input::get('MisGastos');
-		$listaDeInvitados=Invitado::where('idevento','=',Input::get('iddelevento'))->where('idusuario','=',$iduser)->get();
+		$listaDeInvitados=Invitado::where('idevento','=',Input::get('iddelevento2'))->where('idusuario','=',$iduser)->get();
 		foreach ($listaDeInvitados as $usuario) 
 			{
 				$Musuario = invitado::find($usuario->id);
