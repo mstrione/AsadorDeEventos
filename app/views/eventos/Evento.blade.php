@@ -583,6 +583,8 @@
 {{Form::label('file','fotos: ')}}
 {{Form::file('file')}}
 {{form::input('hidden','ideventoN',$TEvento->id)}}
+{{Form::label('titulos','titulo de la Foto: ')}}
+<input type="text" class="form-control"  name="titulo"  id="titulo">
 
 {{Form::submit('upload',array('class'=>'btn btn-success'))}}
 
