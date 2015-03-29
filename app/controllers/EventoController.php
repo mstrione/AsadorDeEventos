@@ -133,6 +133,19 @@ class EventoController extends BaseController {
 
 	
 	}
+	public function llevarItem()
+	{
+		$NitemOK=new Itemsok;
+		$NitemOK->iditem=Input::get('iditem');
+		$NitemOK->cantidad=Input::get('Cantidad');
+		$NitemOK->idusuario=Input::get('iddelusuario');
+		$NitemOK->save();
+		$idevento=Input::get('ideventoN');
+		return Redirect::to("/Evento/$idevento");
+
+
+
+	}
 
 	// public function invitar($idevento=null)
 	// {

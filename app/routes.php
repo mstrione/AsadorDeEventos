@@ -48,3 +48,4 @@ Route::get('/perfil','UsuarioController@MostralPerfil');
 Route::get('/terminos', 'HomeController@terminos');
 Route::post('/Evento/items','EventoController@AgregarItem');
 Route::get('/Evento/destroy/{id}','EventoController@destroyitem');
+Route::post('llevarItem','EventoController@llevarItem');
