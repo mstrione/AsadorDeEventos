@@ -570,8 +570,27 @@
                     @endforeach
                 </tbody>
             </table>
+
+                <div class="page-header">
+                <legend><h1 id="navbar">Fotos del Evento</h1></legend>
+    </div>
+
+
+
+
+
+{{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'EventoController@imagenes' , 'role' => 'form' ,'files'=>true ))}}
+{{Form::label('file','fotos: ')}}
+{{Form::file('file')}}
+{{form::input('hidden','ideventoN',$TEvento->id)}}
+
+{{Form::submit('upload',array('class'=>'btn btn-success'))}}
+
+
         </div><!--well-->
     </div><!--div del contenedor-->
+
+
 
     
 

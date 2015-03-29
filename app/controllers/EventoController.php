@@ -163,6 +163,19 @@ class EventoController extends BaseController {
 
 
 	}
+	public function imagenes()
+	{
+		$file=Input::file('file');
+
+		$url_image=$file->getClientOriginalName();
+
+		$Destinopath=public_path().'/img/ImagenesEvento/';
+
+		$subir=$file->move($Destinopath,$url_image);
+
+		$idevento=Input::get('ideventoN');
+		return Redirect::to("/Evento/$idevento");
+	}
 
 	// public function invitar($idevento=null)
 	// {
