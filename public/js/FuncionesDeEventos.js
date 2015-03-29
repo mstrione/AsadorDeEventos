@@ -11,3 +11,8 @@ function AsignaIdItem2(iditem,nombre)
 	document.getElementById('iditem2').defaultValue=iditem;
 
 }
+function AsignaIdItem3(iditemok,nombre)
+{
+	document.getElementById('ItemAEliminar').defaultValue=nombre;
+	document.getElementById('iditemeliminar').defaultValue=iditemok;
+}

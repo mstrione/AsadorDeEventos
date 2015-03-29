@@ -51,3 +51,4 @@ Route::get('/Evento/destroy/{id}','EventoController@destroyitem');
 Route::post('llevarItem','EventoController@llevarItem');
 Route::post('/AsignarItem','EventoController@AsignarItem');
 Route::post('/Eventos/imagenes','EventoController@imagenes');
+Route::post('/Eventos/eliminaritem','EventoController@EliminarItem');

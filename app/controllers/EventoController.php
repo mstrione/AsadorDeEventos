@@ -188,6 +188,16 @@ class EventoController extends BaseController {
 		return Redirect::to("/Evento/$idevento");
 	}
 
+	public function EliminarItem()
+	{
+		$idevento=Input::get('ideventoN');
+		$iditemok=Input::get('iditemeliminar');
+		$usuarioid=Input::get('iddelusuario');
+		$item=Itemsok::find($iditemok);
+		$item->delete();
+		return Redirect::to("/Evento/$idevento");
+	}
+
 	// public function invitar($idevento=null)
 	// {
 		

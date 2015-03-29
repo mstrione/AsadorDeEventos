@@ -536,12 +536,13 @@
                 </div>
             </div>
             <!--FIN de  pop up de ASIGNAR item -->
+            
 
             <table class='table table-striped table-hover'>
                 <thead>
                     <th>¿Qué Hace Falta?</th>
                     <th>¿Quién trae?</th>
-                    <th>¿Cuantos?</th>
+                    <th>¿Cuantos hay?</th>
                     <th>Faltan</th>
                     <th>Acciones</th>
                 </thead>
@@ -555,7 +556,7 @@
 
                                 <?php $NomUser=Usuario::find($elementOK->idusuario)?>
                                 <div>
-                                <button class="btn btn-info"><span class="badge" >{{$elementOK->cantidad}} </span>{{$NomUser->username}} <a href="" class="close">x</a></button>
+                                <button class="btn btn-info"><span class="badge" >{{$elementOK->cantidad}} </span>{{$NomUser->username}} <a href="" class="close" data-toggle="modal" data-target="#EliminarItem" onclick="AsignaIdItem3({{$elementOK->id}},'{{$item->nombre}}')">x</a></button>
                                 </div>
                                 
                                 <?php $contador=$contador+($elementOK->cantidad)?>                               
@@ -563,13 +564,43 @@
                             @endif    
                         @endforeach </td>
                         <td>{{$contador}}/{{$item->cantidad}}</td>
-                        <td>{{($item->cantidad)}}</td>
+                        <td>{{($item->cantidad)-$contador}}</td>
                         <td><a href="" data-toggle="modal" data-target="#myModalLlevarItem" onclick="AsignaIdItem({{$item->id}},'{{$item->nombre}}')">yo llevo!</a><a href="" data-toggle="modal" data-target="#myModalasignarItem" onclick="AsignaIdItem2({{$item->id}},'{{$item->nombre}}')"> asignar <a href="{{ url('/Evento/destroy',$item->id) }}" class="btn btn-danger" >
                         <span class="glyphicon glyphicon-trash"></span></a></td>                        
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            <!-- PopUp de Aceptar item-->
+            <div id="EliminarItem" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'EventoController@EliminarItem' , 'role' => 'form'))}}
+                                <fieldset>
+                                    <legend>Eliminar item</legend>
+                                    <div class="form-group" >
+                                      <label class="col-lg-2 control-label">eliminar item:</label>                                      
+                                        
+                                        <div class="col-lg-10">
+                                            <input type="text" class="form-control"  name="ItemAEliminar" id="ItemAEliminar"  disabled="true">
+                                          </div>
+                                    </div>
+                                        
+                                    <div class="form-group">
+                                      <div class="col-lg-10 col-lg-offset-2">
+                                      <input type="text" class="form-control"  name="iditemeliminar" style="display:none" id="iditemeliminar" value="">
+                                      {{form::input('hidden','ideventoN',$TEvento->id)}}
+                                        <p>{{Form::submit('Enviar', array('class' => 'btn btn-default'))}}</p>
+                                      </div>
+                                    </div>
+                                </fieldset>
+                            {{Form::close()}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin de PopUp de Aceptar item-->
 
                 <div class="page-header">
                 <legend><h1 id="navbar">Fotos del Evento</h1></legend>
