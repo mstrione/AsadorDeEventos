@@ -49,7 +49,7 @@ class registroController extends BaseController {
 		//{ 
 			if ($_POST)
 			{
-				$Usuario= new usuario;
+				$Usuario= new Usuario;
 				$Usuario -> username = Input::get('username');
 				$Usuario -> apellido =Input::get('apellido');
 				$Usuario -> ciudad = Input::get('ciudad');

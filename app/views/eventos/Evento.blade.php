@@ -8,6 +8,7 @@
     {{ HTML::script('js/cuentas.js') }}
     {{ HTML::style('css/datepicker.css') }} 
     {{ HTML::style('css/EstiloMapa.css') }}
+    {{ HTML::script('js/jquery-2.1.1.js') }}
     <script src="js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script >google.maps.event.addDomListener(window, 'load', initialize);  
@@ -91,7 +92,7 @@
                                 <div  id="mapaevento"></div>
                             </div>
                         </div>
-                        @if(Session::has('usuario_id')==$TEvento->creador)
+                        @if((Session::get('usuario_id'))==($TEvento->creador))
                         <a href="#" class="btn btn-primary">Editar Evento</a>
                         @endif
 
@@ -119,13 +120,13 @@
             <div class="page-header">
                 <legend><h1 id="navbar">invitados</h1></legend>
             </div>
+             @if(Session::get('usuario_id')==($TEvento->creador))
             <div class="form-group">
-                <label for="select" class="col-lg-1 control-label">lista cerrada</label>
-                <div class="col-lg-1">
-                    <select class="form-control" id="select">
-                      <option>Si</option>
-                      <option>No</option>
-                    </select><br>
+                <div class="col-lg-10">
+                    <div class="form-group">
+                        {{Form::label('lista cerrada?')}}
+                        {{Form::checkbox('EstadoDeLalista', 'abierta',array('onclick'=>'CambiaEstado()'))}}                    
+                    </div>
                 </div>
             </div>
                 
@@ -163,6 +164,7 @@
                     </div>
                 </div>
             </div>
+            @endif
 
                         <!--fin pop up code -->
             <table class='table table-striped table-hover'>
@@ -172,13 +174,13 @@
                    <th>asistirá</th>
                    <th>adultos</th>
                    <th>niños</th>
-                   @if(Session::has('usuario_id')==$TEvento->creador)
-                   <th>notificado</th>
-                   <th>gasto</th>
-                   <th>Costo</th>
-                   <th>Balance</th>
-                   <th>$ok</th>
-                   <th>Acciones</th>
+                   @if(Session::get('usuario_id')==($TEvento->creador))
+                        <th>notificado</th>
+                        <th>gasto</th>
+                        <th>Costo</th>
+                        <th>Balance</th>
+                        <th>$ok</th>
+                        <th>Acciones</th>
                    @endif
                 </thead>
                 <tbody>
@@ -186,15 +188,18 @@
                     <tr>   
                     <?php $Ninvitado=Usuario::find($invitado->idusuario)?>
                         <td>{{$Ninvitado->username}}</td>
-                        @if(($invitado->confirmado) ==1)
-                        
-                        <td class="glyphicon glyphicon-ok-sign"></td>
+                        @if(($invitado->confirmado) ==1)                        
+                            <td class="glyphicon glyphicon-ok-sign"></td>
                         @else
-                        <td class="glyphicon glyphicon-minus-sign"></td>
+                            @if(($invitado->confirmado) ==2)
+                                <td class="glyphicon glyphicon-minus-sign"></td>
+                            @else
+                                <td class="glyphicon glyphicon-question-sign"></td>
+                            @endif
                         @endif
                         <td>{{$invitado->adultos}}</td>
                         <td>{{$invitado->menores}}</td>
-                        @if(Session::has('usuario_id')==$TEvento->creador)
+                        @if(Session::get('usuario_id')==$TEvento->creador)
                         <td>{{$invitado->notificado}}</td>
                         <td>{{$invitado->gasto}}</td>
                         <td>{{$invitado->costo}}</td>
@@ -206,6 +211,7 @@
                     @endforeach
                 </tbody>
             </table>
+        @if(Session::get('usuario_id')==$TEvento->creador)   
             <a href="#" class="btn btn-primary btn-sm">Enviar invitacion a no notificacion</a>
             <a href="#" class="btn btn-primary btn-sm">Reenviar invitacion a no confirmados</a>
             <a href="#" class="btn btn-primary btn-sm">Enviar Cuentas a Asistentes</a>
@@ -400,11 +406,13 @@
                         </div><br><br>
                     </div>
                 </div>
-            </div>  
+            </div>
+    @endif          
             <div class="page-header">
                 <legend><h1 id="navbar">Fotos</h1></legend>
             </div>  
         </div>
+
     </div>
 
     

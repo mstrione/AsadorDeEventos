@@ -83,6 +83,7 @@ class HomeController extends BaseController {
 		$rules = array(
 			'nombre' => 'required',
 			'email' => 'required|email',
+			'asunto'=>'required',
 			'mensaje' => 'required',
 			);
 		$validator = Validator::make($input, $rules); //aca se compara el input con las reglas
