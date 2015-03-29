@@ -127,12 +127,28 @@ class EventoController extends BaseController {
 		$NItem->nombre=Input::get('Item');
 		$NItem->cantidad=Input::get('Cantidad');
 		$NItem->save();
-		$TEvento=Evento::find($idevento);
-		$listaDeInvitados=Invitado::where('idevento','=',$idevento)->get();
-		$listaDeItems=Item::where('idevento','=',$idevento)->get();
-		 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados,'listaDeItems'=>$listaDeItems));
-
+		return Redirect::to("/Evento/$idevento");
+		
 	
+	}
+	public function AsignarItem()
+	{
+		$idevento=Input::get('ideventoN');
+		$NitemOK=new Itemsok;
+		$NitemOK->iditem=Input::get('iditem');
+		$NitemOK->cantidad=Input::get('CantidadAsignada');
+		$nombredelusuario=Input::get('UsuarioAAsignar'); //verificar ya que ingresa el nombre
+		$invitados=Invitado::where('idevento','=',$idevento)->get();
+		foreach ($invitados as $invitado) 
+		{
+			$usuario=Usuario::find($invitado->idusuario);
+			if(($usuario->username)==$nombredelusuario)
+			{
+				$NitemOK->idusuario=$invitado->idusuario;
+				$NitemOK->save();
+			}
+		}
+		return Redirect::to("/Evento/$idevento");
 	}
 	public function llevarItem()
 	{
