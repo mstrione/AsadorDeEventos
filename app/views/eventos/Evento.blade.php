@@ -575,7 +575,25 @@
                 <legend><h1 id="navbar">Fotos del Evento</h1></legend>
     </div>
 
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">recuerdos</h3>
+        </div>
+        <div class="row">
+            @foreach($ListaDeFotos as $Foto)
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                
+                    <div class="panel-body">
+                        <img src="{{$Foto->photo}}" alt="{{$Foto->titulo}}" height='100' width='100'> 
+                    </div>
+                
+                </div>
+            </div>
+            @endforeach
+        </div>
 
+    </div>
 
 
 

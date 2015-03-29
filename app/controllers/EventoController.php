@@ -77,7 +77,8 @@ class EventoController extends BaseController {
 		$listaDeInvitados=Invitado::where('idevento','=',$idevento)->get();
 		$listaDeItems=Item::where('idevento','=',$idevento)->get();
 		$ListaDeItemsOks=Itemsok::all();
-		 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados,'listaDeItems'=>$listaDeItems,'ListaDeItemsOks'=>$ListaDeItemsOks));
+		$ListaDeFotos=Foto::where('idevento','=',$idevento)->get();
+		 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados,'listaDeItems'=>$listaDeItems,'ListaDeItemsOks'=>$ListaDeItemsOks,'ListaDeFotos'=>$ListaDeFotos));
 // si se modifica ver que se copio lo mismo en destroy
 		
 	}
@@ -173,7 +174,7 @@ class EventoController extends BaseController {
 
 			$url_image=$file->getClientOriginalName();
 
-			$Destinopath=public_path().'/img/ImagenesEvento/ ';
+			$Destinopath=public_path().'/img/ImagenesEvento/';
 
 			$subir=$file->move($Destinopath,$url_image);
 
