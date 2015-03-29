@@ -77,7 +77,7 @@ class EventoController extends BaseController {
 		$listaDeInvitados=Invitado::where('idevento','=',$idevento)->get();
 		$listaDeItems=Item::where('idevento','=',$idevento)->get();
 		 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados,'listaDeItems'=>$listaDeItems));
-
+// si se modifica ver que se copio lo mismo en destroy
 		
 	}
 	 
@@ -94,6 +94,28 @@ class EventoController extends BaseController {
 		Session::flash('class','danger');
 		}
 		return Redirect::to('MisEventos');
+	}
+	public function destroyitem($iditem)
+	{
+		$Bitem=Item::find($iditem);
+		if ($Bitem->delete())
+		{
+		Session::flash('message','Se ha eliminado el item correctamente');
+		Session::flash('class','success');
+		}else
+		{
+		Session::flash('message','ha ocurrido un error! al eliminar el item');
+		Session::flash('class','danger');
+		}
+		
+		$idevento= $Bitem->idevento;
+		//$TEvento=Evento::find($idevento);
+		//$listaDeInvitados=Invitado::where('idevento','=',$idevento)->get();
+		//$listaDeItems=Item::where('idevento','=',$idevento)->get();
+		// return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados,'listaDeItems'=>$listaDeItems));
+		return Redirect::to("/Evento/$idevento");
+
+
 	}
 
 	public function AgregarItem()

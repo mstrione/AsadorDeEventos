@@ -40,7 +40,7 @@ class InvitadoController extends BaseController {
 	 	 	$mensaje->subject('Nuevo Mail de Contacto');
 	 	 });
 		
-	 		$TEvento=Evento::find(Input::get('ideventoN'));
+	 	$TEvento=Evento::find(Input::get('ideventoN'));
 	 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
 	 	 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
 	}

@@ -46,4 +46,5 @@ Route::post('/invitar','InvitadoController@invitar');
 Route::post('/Evento/','InvitadoController@cuenta');
 Route::get('/perfil','UsuarioController@MostralPerfil');
 Route::get('/terminos', 'HomeController@terminos');
-Route::post('/items','EventoController@AgregarItem');
+Route::post('/Evento/items','EventoController@AgregarItem');
+Route::get('/Evento/destroy/{id}','EventoController@destroyitem');
