@@ -76,7 +76,8 @@ class EventoController extends BaseController {
 		$TEvento=Evento::find($idevento);
 		$listaDeInvitados=Invitado::where('idevento','=',$idevento)->get();
 		$listaDeItems=Item::where('idevento','=',$idevento)->get();
-		 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados,'listaDeItems'=>$listaDeItems));
+		$ListaDeItemsOks=Itemsok::all();
+		 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados,'listaDeItems'=>$listaDeItems,'ListaDeItemsOks'=>$ListaDeItemsOks));
 // si se modifica ver que se copio lo mismo en destroy
 		
 	}
