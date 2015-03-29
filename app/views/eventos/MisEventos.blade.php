@@ -8,19 +8,10 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>Mis Eventos</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="css/StyleComun.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     {{ HTML::script('js/FuncionesDeMisEventos.js') }}
     {{ HTML::script('js/jquery-2.1.1.js') }}
@@ -77,8 +68,7 @@
                         <td>{{$value->direccion}}</td>
                         <td>{{$value->fecha}}</td>
                         <td>{{{$usuarios->username }}}</td> 
-                        <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button>
-                        <button class="btn btn-danger"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-cutlery" ></span></button></td>
+                        <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button><button class="btn btn-danger"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-shopping-cart" ></span></button></td>
                     </tr>
                 @endif
                 @endforeach
@@ -104,7 +94,7 @@
 
                                     <div class="form-group">
                                       <div class="col-lg-6 col-lg-offset-2">
-                                        {{Form::submit('Enviar2', array('class' => 'btn btn-default'))}}
+                                        {{Form::submit('Enviar', array('class' => 'btn btn-default'))}}
                                       </div>
                                     </div>
                                 </fieldset>
@@ -153,12 +143,6 @@
                 </div>
             </div>
 
-    <script >
-    function VerEvento(idevento)
-    {
-        window.location.href="/Evento/"+idevento;
-    }
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>

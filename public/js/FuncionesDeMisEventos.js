@@ -26,3 +26,7 @@ function AsignaIDEvento(idevento)
 	document.getElementById('iddelevento').value=idevento;
 	document.getElementById('iddelevento2').value=idevento;
 }
+function VerEvento(idevento)
+    {
+        window.location.href="/Evento/"+idevento;
+    }

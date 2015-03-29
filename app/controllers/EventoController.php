@@ -75,60 +75,13 @@ class EventoController extends BaseController {
 	{
 		$TEvento=Evento::find($idevento);
 		$listaDeInvitados=Invitado::where('idevento','=',$idevento)->get();
-		 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+		$listaDeItems=Item::where('idevento','=',$idevento)->get();
+		 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados,'listaDeItems'=>$listaDeItems));
+
 		
 	}
 	 
-	
-
-
-	
-	public function store()
-	{
-		//
-	}
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($idevento)
+	 public function destroy($idevento)
 	{
 		$TEvento=Evento::find($idevento);
 		if ($TEvento->delete())
@@ -141,6 +94,22 @@ class EventoController extends BaseController {
 		Session::flash('class','danger');
 		}
 		return Redirect::to('MisEventos');
+	}
+
+	public function AgregarItem()
+	{
+		$idevento=Input::get('ideventoN'); 
+		$NItem =new Item;
+		$NItem->idevento=Input::get('ideventoN');
+		$NItem->nombre=Input::get('Item');
+		$NItem->cantidad=Input::get('Cantidad');
+		$NItem->save();
+		$TEvento=Evento::find($idevento);
+		$listaDeInvitados=Invitado::where('idevento','=',$idevento)->get();
+		$listaDeItems=Item::where('idevento','=',$idevento)->get();
+		 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados,'listaDeItems'=>$listaDeItems));
+
+	
 	}
 
 	// public function invitar($idevento=null)
