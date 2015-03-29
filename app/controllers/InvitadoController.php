@@ -39,10 +39,8 @@ class InvitadoController extends BaseController {
 	 	 	$mensaje->from($FromEmail,$FromName);
 	 	 	$mensaje->subject('Nuevo Mail de Contacto');
 	 	 });
-		
-	 	$TEvento=Evento::find(Input::get('ideventoN'));
-	 	$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
-	 	 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+	 	$idevento=Input::get('ideventoN');
+		return Redirect::to("/Evento/$idevento");
 	}
 	public function cuenta()
 	{
@@ -58,9 +56,8 @@ class InvitadoController extends BaseController {
 				$Musuario->balance=($Musuario->costo)-($usuario->gasto);
 				$Musuario-> save();
 			}
-				$TEvento=Evento::find(Input::get('ideventoN'));
-				$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
-			 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+				$idevento=Input::get('ideventoN');
+		return Redirect::to("/Evento/$idevento");
 		}	
 		
 		 if(Input::get('opcionNum')=='2')
@@ -76,9 +73,8 @@ class InvitadoController extends BaseController {
 		 		$Musuario->balance=($Musuario->costo)-($usuario->gasto);
 		 		$Musuario -> save();
 		 	}
-				$TEvento=Evento::find(Input::get('ideventoN'));
-		 		$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
-		 	 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+				$idevento=Input::get('ideventoN');
+		return Redirect::to("/Evento/$idevento");
 		 }
 
 		 if(Input::get('opcionNum')=='3')
@@ -93,9 +89,8 @@ class InvitadoController extends BaseController {
 		 		$Musuario->balance=($Musuario->costo)-($usuario->gasto);
 		 		$Musuario -> save();
 		 	}
-				$TEvento=Evento::find(Input::get('ideventoN'));
-		 		$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
-		 	 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+				$idevento=Input::get('ideventoN');
+				return Redirect::to("/Evento/$idevento");
 		 }
 
 		 if(Input::get('opcionNum')=='4')
@@ -117,11 +112,11 @@ class InvitadoController extends BaseController {
 		 		$Musuario->save();
 
 		 	}
-				$TEvento=Evento::find(Input::get('ideventoN'));
-		 		$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
+				
 		 		$gasto=0;
 		 		$contador=0;
-		 	 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+		 	 $idevento=Input::get('ideventoN');
+		return Redirect::to("/Evento/$idevento");
 		 }
 		 if(Input::get('opcionNum')=='5')
 		 {
@@ -171,6 +166,8 @@ class InvitadoController extends BaseController {
 				//$TEvento=Evento::find(Input::get('ideventoN'));
 		 		//$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
 		 	 //return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+			$idevento=Input::get('ideventoN');
+			return Redirect::to("/Evento/$idevento");
 		 }
 		 if(Input::get('opcionNum')=='6')
 		 {
@@ -193,9 +190,8 @@ class InvitadoController extends BaseController {
 		 		$Musuario->balance=($Musuario->costo)-($usuario->gasto);		 		
 		 		$Musuario -> save();
 		 	}
-		 	$TEvento=Evento::find(Input::get('ideventoN'));
-		 		$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
-		 	 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+		 	$idevento=Input::get('ideventoN');
+		return Redirect::to("/Evento/$idevento");
 		 }
 		 if(Input::get('opcionNum')==7)
 		 {
@@ -242,9 +238,8 @@ class InvitadoController extends BaseController {
 				$Musuario->balance=($Musuario->costo)-($usuario->gasto);
 				$Musuario-> save();
 			}
-				$TEvento=Evento::find(Input::get('ideventoN'));
-		 		$listaDeInvitados=Invitado::where('idevento','=',Input::get('ideventoN'))->get();
-		 	 return View::make('eventos.Evento',array('TEvento' => $TEvento,'listaDeInvitados' => $listaDeInvitados));
+				$idevento=Input::get('ideventoN');
+				return Redirect::to("/Evento/$idevento");
 
 		 }
 	}
