@@ -99,15 +99,22 @@
                             <div class="panel-body">
                                 <div  id="mapaevento"></div>
                             </div>
-                        </div>
-                        @if((Session::get('usuario_id'))==($TEvento->creador))
-                        <a href="#" class="btn btn-primary">Editar Evento</a>
-                        @endif
-
-
+                        </div>   
                     </form>                        
                 </div>
+
             </div>
+            @if((Session::get('usuario_id'))==($TEvento->creador))
+                        {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'EventoController@Modificar' , 'role' => 'form'))}}
+                            <fieldset>
+                                <legend>Datos del evento</legend>
+                                <div class="form-group">
+                                    {{Form::input('hidden','ideventoN',$TEvento->id)}}
+                                    <p>{{Form::submit('Modificar Evento', array('class' => 'btn btn-default'))}}</p>
+                                </div>
+                            </fieldset>
+                        </form>
+                    @endif
             <div class="page-header">
                 <h1 id="navbar">Mensajes</h1>
             </div>
@@ -233,7 +240,7 @@
         @if(Session::get('usuario_id')==$TEvento->creador)   
             <a href="{{url('/Evento/EnviarInvNoNOtificados',$TEvento->id)}}" class="btn btn-primary btn-sm">Enviar invitacion a no notificacion</a>
             <a href="{{url('/Evento/EnviarInvNoConfirmados',$TEvento->id)}}" class="btn btn-primary btn-sm">Reenviar invitacion a no confirmados</a>
-            <a href="#" class="btn btn-primary btn-sm">Enviar Cuentas a Asistentes</a>
+            <a href="{{url('/Evento/EnviarCuentasAsistentes',$TEvento->id)}}" class="btn btn-primary btn-sm">Enviar Cuentas a Asistentes</a>
         
             <div class="page-header">
                 <legend><h1 id="navbar">Cuentas</h1></legend>

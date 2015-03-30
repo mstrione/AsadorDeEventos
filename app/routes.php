@@ -57,3 +57,6 @@ Route::get('/Eventos/reenvio/{id}','EventoController@reenvio');
 Route::get('/Evento/EnviarCuentas/{id}','EventoController@EnviarCuentas');
 Route::get('/Evento/EnviarInvNoNOtificados/{id}','EventoController@EnviarInvNoNOtificados');
 Route::get('/Evento/EnviarInvNoConfirmados/{id}','EventoController@EnviarInvNoConfirmados');
+Route::get('/Evento/EnviarCuentasAsistentes/{id}','EventoController@EnviarCuentasAsistentes');
+Route::Post('/Modificar','EventoController@Modificar');
+Route::Post('/editando','EventoController@editando');

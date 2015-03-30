@@ -181,7 +181,7 @@ class EventoController extends BaseController {
 			$Fotos=new Foto;
 			$Fotos->idevento=$idevento;
 			$Fotos->titulo=Input::get('titulo');
-			$Fotos->photo=$Destinopath.$url_image;
+			$Fotos->photo='../img/ImagenesEvento/'.$url_image;
 			$Fotos->save();
 		}
 
@@ -323,4 +323,64 @@ class EventoController extends BaseController {
 		return Redirect::to("/Evento/$idevento");
 
 	}
+	public function EnviarCuentasAsistentes($idevento)
+	{
+		$listaDeInvitados=Invitado::all();		
+		$eventoX=Evento::find($idevento);
+		foreach ($listaDeInvitados as $invitado ) 
+		{
+			if( $invitado->confirmado ==1)
+			{
+				$usuario=Usuario::find($invitado->idusuario);
+				$evento=Evento::find($invitado->idevento);
+				$creador=Usuario::find($evento->creador);
+
+				$data=array(
+				'nombre'=>$usuario->username,
+				'creador'=>$creador->username,
+				'mail'=>$invitado->email,
+				'costos'=>$invitado->costo,
+				'gastos'=>$invitado->gasto
+				);
+				$FromEmail = 'admin@asadordeeventos.890m.com';
+			 	 $FromName = 'administrador';
+			 	 $toName=$usuario->username;
+			 	 $toEmail=$invitado->email;
+			 	 Mail::send('emails.cuentas', $data, function($mensaje) use ($FromEmail,$FromName,$toEmail,$toName)
+			 	 {
+			 	 	$mensaje->to($toEmail,$toName);
+			 	 	$mensaje->from($FromEmail,$FromName);
+			 	 	$mensaje->subject('cuentas del evento');
+			 	 });
+			}
+		}
+		return Redirect::to("/Evento/$idevento");
+
+	}
+
+	public function Modificar()
+	{
+		$idevento=Input::get('ideventoN');
+		return View::make('eventos.Modificar',array('idevento'=>$idevento));
+	}
+	public function Editando()
+	{	
+		$idevento=Input::get('ideventoN');
+		$NEvento=Evento::find($idevento);
+			$NEvento -> nombre=Input::get('nombre');
+			$NEvento -> fecha=Input::get('Fecha');
+			$NEvento -> hora=Input::get('hora');
+			$NEvento -> direccion=Input::get('direccion');
+			$NEvento -> descripcion=Input::get('descripcion');
+			$NEvento -> latitud=Input::get('Latitud');
+			$NEvento -> longitud=Input::get('Longitud');
+			$NEvento -> adultosmax=Input::get('adultosmax');
+			$NEvento -> menoresmax=Input::get('menoresmax');
+			$NEvento -> metodocuenta=Input::get('menoresmax');
+			$NEvento -> creador=Session::get('usuario_id');
+			$NEvento-> save();
+		return Redirect::to("/Evento/$idevento");
+
+	}
+
 }
