@@ -213,7 +213,8 @@
                             <td>{{$invitado->costo}}</td>
                             <td>{{$invitado->balance}}</td>
                             <td>#</td>
-                            <td>#</td>
+                            <td><a href="{{url('/Eventos/reenvio',$invitado->id)}}">reenviar invitación</a><a href="{{ url('/Evento/eliminarinvitado',$invitado->id) }}"class="btn btn-danger" >
+                        <span class="glyphicon glyphicon-trash"></span></a></td>
                         @endif
                     </tr>
                     @endforeach
@@ -563,7 +564,7 @@
                         @endforeach </td>
                         <td>{{$contador}}/{{$item->cantidad}}</td>
                         <td>{{($item->cantidad)-$contador}}</td>
-                        <td><a href="" data-toggle="modal" data-target="#myModalLlevarItem" onclick="AsignaIdItem({{$item->id}},'{{$item->nombre}}')">yo llevo!</a><a href="" data-toggle="modal" data-target="#myModalasignarItem" onclick="AsignaIdItem2({{$item->id}},'{{$item->nombre}}')"> asignar <a href="{{ url('/Evento/destroy',$item->id) }}" class="btn btn-danger" >
+                        <td><a href="" data-toggle="modal" data-target="#myModalLlevarItem" onclick="AsignaIdItem({{$item->id}},'{{$item->nombre}}')">yo llevo!</a><a href="" data-toggle="modal" data-target="#myModalasignarItem" onclick="AsignaIdItem2({{$item->id}},'{{$item->nombre}}')"> asignar</a> <a href="{{ url('/Evento/destroy',$item->id) }}" class="btn btn-danger" >
                         <span class="glyphicon glyphicon-trash"></span></a></td>                        
                     </tr>
                     @endforeach

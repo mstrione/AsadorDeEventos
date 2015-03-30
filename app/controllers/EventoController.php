@@ -198,6 +198,42 @@ class EventoController extends BaseController {
 		return Redirect::to("/Evento/$idevento");
 	}
 
+	Public function eliminarinvitado($idinvitado)
+	{
+		$invitado=Invitado::find($idinvitado);
+		$idevento=$invitado->idevento;
+		$invitado->delete();
+		return Redirect::to("/Evento/$idevento");
+
+
+	}
+	public function reenvio($invitadoid)
+	{
+		$msj =null;
+		$invitado=Invitado::find($invitadoid);
+		$usuario=Usuario::find($invitado->idusuario);
+		$evento=Evento::find($invitado->idevento);
+		$creador=Usuario::find($evento->creador);
+	 	$data= array(
+	 	 	'nombre' => $usuario->username,
+	 	 	'email' => $invitado->email,
+	 	 	'creador'=> $creador->username
+	 	 	);
+	 	 $FromEmail = 'admin@asadordeeventos.890m.com';
+	 	 $FromName = 'administrador';
+	 	 $toName=$usuario->username;
+	 	 $toEmail=$invitado->email;
+	 	
+	 	Mail::send('emails.recordatorio', $data, function($mensaje) use ($FromEmail,$FromName,$toEmail,$toName)
+	 	 {
+	 	 	$mensaje->to($toEmail,$toName);
+	 	 	$mensaje->from($FromEmail,$FromName);
+	 	 	$mensaje->subject('Acordate del evento!');
+	 	 });
+	 	$idevento=$invitado->idevento;
+		return Redirect::to("/Evento/$idevento");
+	}
+
 	// public function invitar($idevento=null)
 	// {
 		
