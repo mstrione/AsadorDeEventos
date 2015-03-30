@@ -19,8 +19,10 @@ class InvitadoController extends BaseController {
 	 	 	'nombre' => Input::get('nombre'),
 	 	 	'email' => Input::get('email')
 	 	 	);
-	 	 $FromEmail = 'asadordeeventos@gmail.com';
+	 	 $FromEmail = 'admin@asadordeeventos.890m.com';
 	 	 $FromName = 'administrador';
+	 	 $toName=Input::get('nombre');
+	 	 $toEmail=Input::get('email');
 
 	 	 
 	 	$email=Input::get('email');
@@ -33,9 +35,9 @@ class InvitadoController extends BaseController {
 	 		$Ninvitado->rol=1 ; //rol del invitado
 	 		$Ninvitado->save();
 	 	}
-	 	Mail::send('emails.invitado', $data, function($mensaje) use ($FromEmail,$FromName)
+	 	Mail::send('emails.invitado', $data, function($mensaje) use ($FromEmail,$FromName,$toEmail,$toName)
 	 	 {
-	 	 	$mensaje->to($FromEmail,$FromName);
+	 	 	$mensaje->to($toEmail,$toName);
 	 	 	$mensaje->from($FromEmail,$FromName);
 	 	 	$mensaje->subject('Nuevo Mail de Contacto');
 	 	 });
