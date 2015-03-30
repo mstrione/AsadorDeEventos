@@ -61,4 +61,5 @@ Route::get('/Evento/EnviarCuentasAsistentes/{id}','EventoController@EnviarCuenta
 Route::Post('/Modificar','EventoController@Modificar');
 Route::Post('/editando','EventoController@editando');
 Route::Post('/CerrarEvento','EventoController@CerrarEvento');
+Route::post('/eliminarfoto','EventoController@EliminarFoto');
 

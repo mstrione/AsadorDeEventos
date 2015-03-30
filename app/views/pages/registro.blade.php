@@ -2,9 +2,11 @@
 @extends('layouts.default')
 <head>
 @include('includes.head')
+{{ HTML::script('js/funcionesregistro.js') }}
 </head>
 @section('content')
 	
+
 <body>	
 	<div class="container" > 
   	<div class="well">
@@ -129,7 +131,7 @@ Reservamos el derecho a modificar esta Declaración de Privacidad en cualquier m
         <!--CheckBox-->
         <div class="col-lg-10">
           <div class="form-group">
-            {{Form::checkbox('terms', 'true')}}
+            <input  name="terms" id="terms" type="checkbox" value="false" onclick="aceptar()">
             {{Form::label('Acepto terminos y condiciones')}}
           </div>
         </div>
@@ -137,7 +139,7 @@ Reservamos el derecho a modificar esta Declaración de Privacidad en cualquier m
         <!--Boton-->
         <div class="col-lg-10">
           <div class="form-group">
-            {{Form::submit('Aceptar')}}
+            {{Form::submit('Aceptar',array('disabled'=>'true','id'=>'Aceptar'))}}
           </div>
         </div>
       </fieldset>

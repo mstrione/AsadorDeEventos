@@ -112,7 +112,7 @@
             @if((Session::get('usuario_id'))==($TEvento->creador))
                         {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'EventoController@Modificar' , 'role' => 'form'))}}
                             <fieldset>
-                                <legend>Datos del evento</legend>
+                                
                                 <div class="form-group">
                                     {{Form::input('hidden','ideventoN',$TEvento->id)}}
                                     <p>{{Form::submit('Modificar Evento', array('class' => 'btn btn-default'))}}</p>
@@ -145,14 +145,14 @@
                 <div class="col-lg-10">
                     <div class="form-group">
                         @if($TEvento->cerrado ==1)
-                        <div  ><label class="label label-warning"  >no se admiten mas invitaciones</label> </div>
+                        <div  ><label class="label label-warning"  >no se admiten mas confirmaciones de asistencia</label> </div>
                         @else
                          <label >Evento abierto</label>  
                          @endif                 
                     </div>
                 </div>
             </div>
-                
+              @if($TEvento->cerrado ==0)  
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">agregar invitado </button>
             <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -188,6 +188,7 @@
                 </div>
             </div>
             @endif
+            @endif
 
                         <!--fin pop up code -->
             <table class='table table-striped table-hover'>
@@ -202,7 +203,6 @@
                         <th>gasto</th>
                         <th>Costo</th>
                         <th>Balance</th>
-                        <th>$ok</th>
                         <th>Acciones</th>
                    @endif
                 </thead>
@@ -227,7 +227,7 @@
                             <td>{{$invitado->gasto}}</td>
                             <td>{{$invitado->costo}}</td>
                             <td>{{$invitado->balance}}</td>
-                            <td>#</td>
+                            
                             @if(($invitado->confirmado) ==0)
                                 <td><a href="{{url('/Eventos/reenvio',$invitado->id)}}">reenviar invitación</a><a href="{{ url('/Evento/eliminarinvitado',$invitado->id) }}"class="btn btn-danger" >
                                 <span class="glyphicon glyphicon-trash"></span></a></td>
@@ -682,6 +682,9 @@
                 
                     <div class="panel-body">
                         <a href="{{$Foto->photo}}"><img src="{{$Foto->photo}}" alt="{{$Foto->titulo}}" title="{{$Foto->titulo}}" height='100' width='100'> </a>
+                        @if(Session::get('usuario_id')==$TEvento->creador)
+                        <a href="" class="close" data-toggle="modal" data-target="#EliminarFoto" onclick="fotodelete({{$Foto->id}})">x</a>
+                        @endif
                     </div>
                 
                 </div>
@@ -690,6 +693,29 @@
         </div>
 
     </div>
+    <div id="EliminarFoto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'EventoController@EliminarFoto' , 'role' => 'form'))}}
+                                <fieldset>
+                                    <legend>Eliminar Foto</legend>
+                                    <div class="form-group" >
+                                      <label class="col-lg-2 control-label">¿eliminar Foto?</label>                                      
+                                        
+                                    <div class="form-group">
+                                      <div class="col-lg-10 col-lg-offset-2">
+                                      <input type="text" class="form-control"  name="idfotodelete" style="display:none" id="idfotodelete" value="">
+                                      {{form::input('hidden','ideventoN',$TEvento->id)}}
+                                        <p>{{Form::submit('Enviar', array('class' => 'btn btn-default'))}}</p>
+                                      </div>
+                                    </div>
+                                </fieldset>
+                            {{Form::close()}}
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 

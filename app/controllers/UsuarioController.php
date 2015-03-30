@@ -97,7 +97,13 @@ class UsuarioController extends BaseController {
 	
 	public function bienvenida()
 	{
-		return View::make('usuarios.bienvenida');
+		//return View::make('usuarios.bienvenida');
+		$listaDeEventos=MisEvento::all(); //asigna a $listaDeEventos todas las filas de la tabla de eventos
+		$listaDeInvitados=Invitado::all();
+		
+		return View::make('eventos.MisEventos',array('listaDeEventos'=>$listaDeEventos,'listaDeInvitados'=>$listaDeInvitados)); //devuelve la vista de MisEventos con el valos 'lista de eventos'
+
+
 	}
 
 	

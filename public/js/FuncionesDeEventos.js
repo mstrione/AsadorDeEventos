@@ -30,3 +30,7 @@ function cerrarinvitaciones()
 	}
 		
 }
+function fotodelete(id)
+{
+	document.getElementById('idfotodelete').defaultValue=id;
+}

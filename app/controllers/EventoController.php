@@ -395,5 +395,14 @@ class EventoController extends BaseController {
 		$EventoM->save();
 		return Redirect::to("/Evento/$idevento");
 	}
+	public function EliminarFoto()
+	{
+		$idFoto=Input::get('idfotodelete');
+		$foto=Foto::find($idFoto);
+		$foto->delete();
+		$idevento=Input::get('ideventoN');
+		return Redirect::to("/Evento/$idevento");
+
+	}
 
 }

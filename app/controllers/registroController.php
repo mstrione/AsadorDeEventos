@@ -21,32 +21,26 @@ class registroController extends BaseController {
 	
 	public function post_registro()
 	{
-		//$input= Input::all();
-		//$rules=array(
-		//	'username' => 'required|min:3|max:10',
-		//	'apellido'=>'required|min:3|max:10',
-		//	'email' => 'required|email|unique',
-		//	'password' => 'required|min:4|max:10',
-		//	'nacimiento'=>'required',
-		//	'verificacion'=>'same:password',
-		//	'provincia'=>'required',
-		//	'ciudad'=>'required'			
-		//);
-		//	
-		//$messages = array(
-       //   	'required' => 'El campo :attribute es obligatorio.',
-        //  	'email' => 'El campo :attribute debe ser un email válido.',
-        //  	'unique' => 'El email ingresado ya existe en la base de datos'
-        //);
+		$input= Input::all();
+		$rules=array(
+			'username' => 'required|min:3|max:10',
+			'apellido'=>'required|min:3|max:10',
+			'email' => 'required|email|unique:usuarios,email',
+			'password' => 'required|min:3|max:10',
+			'nacimiento'=>'required',
+			'verificacion'=>'same:password',
+			'provincias'=>'required',
+			'ciudad'=>'required'			
+		);
 			
-		//$validator = Validator::make ($input, $rules, $messages); 
+		$validator = Validator::make ($input, $rules); 
 			
-		//if ($validator->fails())
-		//{
-		//	return Redirect::back()->withErrors($validator)-> with('estado', 'Revise los datos ingresados');				
-		//}
-		//else
-		//{ 
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)-> with('estado', 'Revise los datos ingresados');				
+		}
+		else
+		{ 
 			if ($_POST)
 			{
 				$Usuario= new Usuario;
@@ -66,6 +60,6 @@ class registroController extends BaseController {
 			{
 				return Redirect::back();
 			}		
-		//}
+		}
 	}
 }
