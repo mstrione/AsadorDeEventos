@@ -27,9 +27,7 @@ class MisEventosController extends BaseController {
 				$Musuario->adultos=$CAdultos;
 				$Musuario->save();
 			}
-			$listaDeEventos=MisEvento::all(); //asigna a $listaDeEventos todas las filas de la tabla de eventos
-		$listaDeInvitados=Invitado::all();
-		return View::make('eventos.MisEventos',array('listaDeEventos'=>$listaDeEventos,'listaDeInvitados'=>$listaDeInvitados));
+			return Redirect::to("/MisEventos");
 		}
 
 		if($desicion=='no')
@@ -41,9 +39,7 @@ class MisEventosController extends BaseController {
 				$Musuario->confirmado=2;
 				$Musuario->save();
 			}
-			$listaDeEventos=MisEvento::all(); //asigna a $listaDeEventos todas las filas de la tabla de eventos
-		$listaDeInvitados=Invitado::all();
-		return View::make('eventos.MisEventos',array('listaDeEventos'=>$listaDeEventos,'listaDeInvitados'=>$listaDeInvitados));
+			return Redirect::to("/MisEventos");
 		}
 
 		if($desicion=="indeterminado")
@@ -55,9 +51,7 @@ class MisEventosController extends BaseController {
 				$Musuario->confirmado=0;
 				$Musuario->save();
 			}
-			$listaDeEventos=MisEvento::all(); //asigna a $listaDeEventos todas las filas de la tabla de eventos
-		$listaDeInvitados=Invitado::all();
-		return View::make('eventos.MisEventos',array('listaDeEventos'=>$listaDeEventos,'listaDeInvitados'=>$listaDeInvitados));
+			return Redirect::to("/MisEventos");
 		}
 		
 	}
@@ -66,16 +60,14 @@ class MisEventosController extends BaseController {
 	{
 		$iduser=Input::get('myuser');
 		$MisGastos=Input::get('MisGastos');
-		$listaDeInvitados=Invitado::where('idevento','=',Input::get('iddelevento2'))->where('idusuario','=',$iduser)->get();
+		$listaDeInvitados=Invitado::where('idevento','=',Input::get('iddelevento'))->where('idusuario','=',$iduser)->get();
 		foreach ($listaDeInvitados as $usuario) 
 			{
 				$Musuario = invitado::find($usuario->id);
 				$Musuario->gasto=$MisGastos;
 				$Musuario->save();
 			}
-		$listaDeEventos=MisEvento::all(); //asigna a $listaDeEventos todas las filas de la tabla de eventos
-		$listaDeInvitados=Invitado::all();
-		return View::make('eventos.MisEventos',array('listaDeEventos'=>$listaDeEventos,'listaDeInvitados'=>$listaDeInvitados));
+		return Redirect::to("/MisEventos");
 
 	}
 

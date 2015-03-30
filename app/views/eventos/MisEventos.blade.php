@@ -63,14 +63,23 @@
                 @endif
                 @if ($value->id ==$iddelevento)
                 <?php $usuarios=Usuario::find($value->creador)?>
+                <?php $usurioYestado=Invitado::where('idusuario','=',Session::get('usuario_id'))->where('idevento','=',$iddelevento)->get()?>
+                @foreach($usurioYestado as $EstadoDelUser)
+
                     <tr>
                         <td>{{$value->nombre}}</td>
                         <td>{{$value->direccion}}</td>
                         <td>{{$value->fecha}}</td>
-                        <td>{{{$usuarios->username }}}</td> 
-                        <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button><button class="btn btn-danger"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-shopping-cart" ></span></button></td>
+                        <td>{{{$usuarios->username }}}</td>
+                        @if($EstadoDelUser->confirmado == 1) 
+                         <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button><button class="btn btn-danger"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal2" ><span class="glyphicon glyphicon-shopping-cart" ></span></button></td>
+                        @else
+                            <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button><button class="btn btn-danger"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal2" disabled="true"><span class="glyphicon glyphicon-shopping-cart" ></span></button></td>
+                        @endif
                     </tr>
+                    @endforeach
                 @endif
+                
                 @endforeach
         	   </tbody>
             </table>
