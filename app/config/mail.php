@@ -27,7 +27,8 @@ return array(
 	| the Mailgun mail service which will provide reliable deliveries.
 	|
 	*/
-	'host' => 'smtp.gmail.com',
+	'host' => 'mx1.hostinger.com.ar',
+	//'host' => 'smtp.gmail.com',
 	//'host' => 'smtp.mailgun.org',
 
 	/*
@@ -40,7 +41,7 @@ return array(
 	| stay compatible with the Mailgun e-mail application by default.
 	|
 	*/
-	'port' => 587,
+	'port' => 2525,
 	//'port' => 587,
 
 	/*
@@ -67,7 +68,7 @@ return array(
 	|
 	*/
 
-	'encryption' => 'tls',
+	//'encryption' => 'tls',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -79,7 +80,8 @@ return array(
 	| connection. You may also set the "password" value below this one.
 	|
 	*/
-	'username' => 'asadordeeventos@gmail.com',
+	'username' => 'admin@asadordeeventos.890m.com',
+	//'username' => 'asadordeeventos@gmail.com',
 	//'username' => null,
 
 	/*
