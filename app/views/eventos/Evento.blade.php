@@ -218,7 +218,7 @@
                                 <span class="glyphicon glyphicon-trash"></span></a></td>
                             @else
                                 <td><a href="{{ url('/Evento/eliminarinvitado',$invitado->id) }}"class="btn btn-danger" >
-                                <span class="glyphicon glyphicon-trash"></span></a></td>
+                                <span class="glyphicon glyphicon-trash"></span></a> <a href="{{ url('/Evento/EnviarCuentas',$invitado->id) }}">enviar cuentas</a></td>
                             @endif
                         @endif
                     </tr>

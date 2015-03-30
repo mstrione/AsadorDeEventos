@@ -234,28 +234,31 @@ class EventoController extends BaseController {
 		return Redirect::to("/Evento/$idevento");
 	}
 
-	// public function invitar($idevento=null)
-	// {
-		
+	public function EnviarCuentas($IdInvitado)
+	{
+		$invitado=Invitado::find($IdInvitado);
+		$usuario=Usuario::find($invitado->idusuario);
+		$evento=Evento::find($invitado->idevento);
+		$creador=Usuario::find($evento->creador);
+		$data=array(
+			'nombre'=>$usuario->username,
+			'creador'=>$creador->username,
+			'mail'=>$invitado->email,
+			'costos'=>$invitado->costo,
+			'gastos'=>$invitado->gasto
+			);
+		$FromEmail = 'admin@asadordeeventos.890m.com';
+	 	 $FromName = 'administrador';
+	 	 $toName=$usuario->username;
+	 	 $toEmail=$invitado->email;
+	 	 Mail::send('emails.cuentas', $data, function($mensaje) use ($FromEmail,$FromName,$toEmail,$toName)
+	 	 {
+	 	 	$mensaje->to($toEmail,$toName);
+	 	 	$mensaje->from($FromEmail,$FromName);
+	 	 	$mensaje->subject('cuentas del evento');
+	 	 });
+	 	$idevento=$invitado->idevento;
+		return Redirect::to("/Evento/$idevento");
 
-	// 		$msj =null;
-	// 		$data= array(
-	// 			'nombre' => Input::get('nombre'),
-	// 			'email' => Input::get('email')
-	// 			);
-	// 		$FromEmail = 'asadordeeventos@gmail.com';
-	// 		$FromName = 'administrador';
-
-	// 		Mail::send('emails.invitado', $data, function($mensaje) use ($FromEmail,$FromName)
-	// 		{
-	// 			$mensaje->to($FromEmail,$FromName);
-	// 			$mensaje->from($FromEmail,$FromName);
-	// 			$mensaje->subject('Nuevo Mail de Contacto');
-	// 		});		
-
-	// 	return View::make('contacto');
-		
-	// }
-
-
+	}
 }
