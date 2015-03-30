@@ -213,8 +213,13 @@
                             <td>{{$invitado->costo}}</td>
                             <td>{{$invitado->balance}}</td>
                             <td>#</td>
-                            <td><a href="{{url('/Eventos/reenvio',$invitado->id)}}">reenviar invitación</a><a href="{{ url('/Evento/eliminarinvitado',$invitado->id) }}"class="btn btn-danger" >
-                        <span class="glyphicon glyphicon-trash"></span></a></td>
+                            @if(($invitado->confirmado) ==0)
+                                <td><a href="{{url('/Eventos/reenvio',$invitado->id)}}">reenviar invitación</a><a href="{{ url('/Evento/eliminarinvitado',$invitado->id) }}"class="btn btn-danger" >
+                                <span class="glyphicon glyphicon-trash"></span></a></td>
+                            @else
+                                <td><a href="{{ url('/Evento/eliminarinvitado',$invitado->id) }}"class="btn btn-danger" >
+                                <span class="glyphicon glyphicon-trash"></span></a></td>
+                            @endif
                         @endif
                     </tr>
                     @endforeach
