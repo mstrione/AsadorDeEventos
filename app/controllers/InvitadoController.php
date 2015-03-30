@@ -13,11 +13,15 @@ class InvitadoController extends BaseController {
 	}
 
 	 public function invitar()
-	{
+	{	
+		$idevento=Input::get('ideventoN');
+		$evento=Evento::find($idevento);
 	 	 $msj =null;
+	 	 $usuario=Usuario::find($evento->creador);
 	 	 $data= array(
 	 	 	'nombre' => Input::get('nombre'),
-	 	 	'email' => Input::get('email')
+	 	 	'email' => Input::get('email'),
+	 	 	'creador'=>$usuario->username
 	 	 	);
 	 	 $FromEmail = 'admin@asadordeeventos.890m.com';
 	 	 $FromName = 'administrador';
@@ -41,7 +45,7 @@ class InvitadoController extends BaseController {
 	 	 	$mensaje->from($FromEmail,$FromName);
 	 	 	$mensaje->subject('Nuevo Mail de Contacto');
 	 	 });
-	 	$idevento=Input::get('ideventoN');
+	 	
 		return Redirect::to("/Evento/$idevento");
 	}
 	public function cuenta()

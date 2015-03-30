@@ -217,8 +217,13 @@
                                 <td><a href="{{url('/Eventos/reenvio',$invitado->id)}}">reenviar invitación</a><a href="{{ url('/Evento/eliminarinvitado',$invitado->id) }}"class="btn btn-danger" >
                                 <span class="glyphicon glyphicon-trash"></span></a></td>
                             @else
-                                <td><a href="{{ url('/Evento/eliminarinvitado',$invitado->id) }}"class="btn btn-danger" >
-                                <span class="glyphicon glyphicon-trash"></span></a> <a href="{{ url('/Evento/EnviarCuentas',$invitado->id) }}">enviar cuentas</a></td>
+                                @if(($invitado->confirmado) ==1)
+                                <td><a href="{{ url('/Evento/EnviarCuentas',$invitado->id) }}">enviar cuentas</a><a href="{{ url('/Evento/eliminarinvitado',$invitado->id) }}"class="btn btn-danger" >
+                                <span class="glyphicon glyphicon-trash"></span></a> </td>
+                                @else
+                                    <td><a href="{{ url('/Evento/eliminarinvitado',$invitado->id) }}"class="btn btn-danger" >
+                                    <span class="glyphicon glyphicon-trash"></span></a></td>
+                                @endif
                             @endif
                         @endif
                     </tr>
@@ -226,8 +231,8 @@
                 </tbody>
             </table>
         @if(Session::get('usuario_id')==$TEvento->creador)   
-            <a href="#" class="btn btn-primary btn-sm">Enviar invitacion a no notificacion</a>
-            <a href="#" class="btn btn-primary btn-sm">Reenviar invitacion a no confirmados</a>
+            <a href="{{url('/Evento/EnviarInvNoNOtificados',$TEvento->id)}}" class="btn btn-primary btn-sm">Enviar invitacion a no notificacion</a>
+            <a href="{{url('/Evento/EnviarInvNoConfirmados',$TEvento->id)}}" class="btn btn-primary btn-sm">Reenviar invitacion a no confirmados</a>
             <a href="#" class="btn btn-primary btn-sm">Enviar Cuentas a Asistentes</a>
         
             <div class="page-header">

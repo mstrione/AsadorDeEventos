@@ -261,4 +261,66 @@ class EventoController extends BaseController {
 		return Redirect::to("/Evento/$idevento");
 
 	}
+	public function EnviarInvNoNOtificados($idevento)
+	{
+		$listaDeInvitados=Invitado::all();
+		$eventoX=Evento::find($idevento);
+		foreach ($listaDeInvitados as $invitado ) 
+		{
+			if($invitado->notificado ==0)
+			{
+				$usuario=Usuario::find($invitado->idusuario);
+				$creador=Usuario::find($eventoX->creador);
+				$data=array(
+					'nombre'=>$usuario->username,
+					'email' =>$invitado->email,
+					'creador'=>$creador->username
+					);
+				$FromEmail = 'admin@asadordeeventos.890m.com';
+		 		$FromName = 'administrador';
+		 		$toName=$usuario->username;
+		 		$toEmail=$invitado->email;
+			 	Mail::send('emails.notificacion', $data, function($mensaje) use ($FromEmail,$FromName,$toEmail,$toName)
+			 	{
+			 	 	$mensaje->to($toEmail,$toName);
+			 	 	$mensaje->from($FromEmail,$FromName);
+			 	 	$mensaje->subject('Notificacion de evento');
+			 	});
+				$invitado->notificado=1;
+				$invitado->save();
+				
+			}
+		}
+		return Redirect::to("/Evento/$idevento");
+	}
+	public function EnviarInvNoConfirmados($idevento)
+	{
+		$listaDeInvitados=Invitado::all();		
+		$eventoX=Evento::find($idevento);
+		foreach ($listaDeInvitados as $invitado ) 
+		{
+			if( $invitado->confirmado ==0)
+			{
+				$usuario=Usuario::find($invitado->idusuario);
+				$creador=Usuario::find($eventoX->creador);
+				$data=array(
+					'nombre'=>$usuario->username,
+					'email' =>$invitado->email,
+					'creador'=>$creador->username
+					);
+				$FromEmail = 'admin@asadordeeventos.890m.com';
+		 		$FromName = 'administrador';
+		 		$toName=$usuario->username;
+		 		$toEmail=$invitado->email;
+			 	Mail::send('emails.noconfirmados', $data, function($mensaje) use ($FromEmail,$FromName,$toEmail,$toName)
+			 	{
+			 	 	$mensaje->to($toEmail,$toName);
+			 	 	$mensaje->from($FromEmail,$FromName);
+			 	 	$mensaje->subject('pedido de confirmacion a evento');
+			 	});
+			}
+		}
+		return Redirect::to("/Evento/$idevento");
+
+	}
 }

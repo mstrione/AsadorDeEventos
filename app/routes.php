@@ -55,3 +55,5 @@ Route::post('/Eventos/eliminaritem','EventoController@EliminarItem');
 Route::get('/Evento/eliminarinvitado/{id?}','EventoController@eliminarinvitado');
 Route::get('/Eventos/reenvio/{id}','EventoController@reenvio');
 Route::get('/Evento/EnviarCuentas/{id}','EventoController@EnviarCuentas');
+Route::get('/Evento/EnviarInvNoNOtificados/{id}','EventoController@EnviarInvNoNOtificados');
+Route::get('/Evento/EnviarInvNoConfirmados/{id}','EventoController@EnviarInvNoConfirmados');
