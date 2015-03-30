@@ -11,8 +11,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/StyleComun.css" rel="stylesheet">
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!--<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>--> 
     {{ HTML::script('js/FuncionesDeMisEventos.js') }}
     {{ HTML::script('js/jquery-2.1.1.js') }}
 

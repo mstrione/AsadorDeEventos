@@ -1,20 +1,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     @include('includes.headersesion')
-    {{ HTML::script('js/vallenato.js') }}
-    {{ HTML::style('css/vallenato.css') }}
-    {{ HTML::script('js/datepicker.js') }}
     {{ HTML::script('js/MapaEvento.js') }}
     {{ HTML::script('js/cuentas.js') }}
     {{ HTML::style('css/datepicker.css') }} 
     {{ HTML::style('css/EstiloMapa.css') }}
     {{ HTML::script('js/jquery-2.1.1.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/FuncionesDeEventos.js') }}
+    {{ HTML::script('js/FuncionesDeEventos.js')}}
     {{ HTML::style('css/StyleComun.css') }}
     {{ HTML::style('css/StyleIndex.css') }}
     {{ HTML::style('css/bootstrap.min.css') }}
-    <script src="js/bootstrap.min.js"></script>
+    {{ HTML::script('js/bootstrap.min.js') }}
+    {{ HTML::script('js/bootstrap.min.js') }}
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script >google.maps.event.addDomListener(window, 'load', initialize);  

@@ -1,6 +1,9 @@
 @extends('layouts.default')
 <head>
 	@include('includes.headqs')
+
+    {{ HTML::script('js/jquery-2.1.1.js') }}
+    {{ HTML::script('js/bootstrap.min.js') }}
 </head>
 @section('content')
 <div class="container"> <!--le da el cuerpo al body (valga la redundancia)--> <!--modificado en el css box-shadow-->

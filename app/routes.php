@@ -38,8 +38,8 @@ Route::get('crearEvento', 'EventoController@get_crearEvento');
 Route::post('crearEvento', 'EventoController@get_EventoX');
 Route::post('/MisEventos','EventoController@get_EventoX');
 Route::get('/MisEventos/destroy/{id}','EventoController@destroy');
-Route::post('/MisEventos','MisEventosController@asistencia') ;
-Route::post('/MisEvento','MisEventosController@gastos'); 
+Route::post('/MisEventos/asistencia','MisEventosController@asistencia') ;
+Route::post('/MisEvento/gastos','MisEventosController@gastos'); 
 
 Route::get('/Evento/{idevento?}','EventoController@VerEvento');
 Route::post('/invitar','InvitadoController@invitar');
