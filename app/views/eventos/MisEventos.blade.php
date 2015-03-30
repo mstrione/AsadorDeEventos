@@ -45,7 +45,7 @@
                         <?php $iddelevento= $invitados->idevento  ?>
                     @endif
                 @endforeach
-
+                <?php $EstadoDelEvento=Evento::find($iddelevento);?>
                 @foreach ($listaDeEventos as $value )
                 @if ($value->creador == Session::get('usuario_id') ) 
                   <?php $usuarios=Usuario::find($value->creador)?>
@@ -72,9 +72,19 @@
                         <td>{{$value->fecha}}</td>
                         <td>{{{$usuarios->username }}}</td>
                         @if($EstadoDelUser->confirmado == 1) 
-                         <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button><button class="btn btn-danger"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal2" ><span class="glyphicon glyphicon-shopping-cart" ></span></button></td>
+                         <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button>
+                         @if($EstadoDelEvento->cerrado==1)
+                            <button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal" disabled="true"><span class="glyphicon glyphicon-cutlery"  ></span></button><button class="btn btn-danger"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal2" ><span class="glyphicon glyphicon-shopping-cart" ></span></button></td>
+                            @else
+                                <button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon-cutlery" ></span></button><button class="btn btn-danger"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal2" ><span class="glyphicon glyphicon-shopping-cart" ></span></button></td>
+                            @endif
+
                         @else
-                            <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button><button class="btn btn-danger"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal2" disabled="true"><span class="glyphicon glyphicon-shopping-cart" ></span></button></td>
+                            @if($EstadoDelEvento->cerrado==1)
+                            <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button disabled="true" class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button><button class="btn btn-danger"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal2" disabled="true"><span class="glyphicon glyphicon-shopping-cart" ></span></button></td>
+                            @else
+                             <td> <button class="btn btn-info" id="{{$value->id}}" onclick="VerEvento(this.id)"><span class="glyphicon glyphicon-eye-open" ></span></button><button class="btn btn-success"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cutlery" ></span></button><button class="btn btn-danger"  onclick="AsignaIDEvento({{$value->id}})" data-toggle="modal" data-target="#myModal2" disabled="true"><span class="glyphicon glyphicon-shopping-cart" ></span></button></td>
+                            @endif
                         @endif
                     </tr>
                     @endforeach

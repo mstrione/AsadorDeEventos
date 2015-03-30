@@ -60,3 +60,5 @@ Route::get('/Evento/EnviarInvNoConfirmados/{id}','EventoController@EnviarInvNoCo
 Route::get('/Evento/EnviarCuentasAsistentes/{id}','EventoController@EnviarCuentasAsistentes');
 Route::Post('/Modificar','EventoController@Modificar');
 Route::Post('/editando','EventoController@editando');
+Route::Post('/CerrarEvento','EventoController@CerrarEvento');
+

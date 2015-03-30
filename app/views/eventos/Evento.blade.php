@@ -33,8 +33,13 @@
     <title>AdE - Contacto</title>    
 </head>
 <body>
- 
-
+<?php $listaDeInvitadosC=Invitado::all(); $autorizado=false?>
+@foreach($listaDeInvitadosC as $invitadoC)
+    @if((Session::get('usuario_id')==$invitadoC->idusuario) || (Session::get('usuario_id')==$TEvento->creador ))
+        <?php $autorizado=true;?>
+    @endif
+@endforeach 
+@if($autorizado)
     <div class="container"> 
         <div class="well"> 
                 @if(Session::has('message'))
@@ -139,8 +144,11 @@
             <div class="form-group">
                 <div class="col-lg-10">
                     <div class="form-group">
-                        {{Form::label('lista cerrada?')}}
-                        {{Form::checkbox('EstadoDeLalista', 'abierta',array('onclick'=>'CambiaEstado()'))}}                    
+                        @if($TEvento->cerrado ==1)
+                        <div  ><label class="label label-warning"  >no se admiten mas invitaciones</label> </div>
+                        @else
+                         <label >Evento abierto</label>  
+                         @endif                 
                     </div>
                 </div>
             </div>
@@ -241,7 +249,11 @@
             <a href="{{url('/Evento/EnviarInvNoNOtificados',$TEvento->id)}}" class="btn btn-primary btn-sm">Enviar invitacion a no notificacion</a>
             <a href="{{url('/Evento/EnviarInvNoConfirmados',$TEvento->id)}}" class="btn btn-primary btn-sm">Reenviar invitacion a no confirmados</a>
             <a href="{{url('/Evento/EnviarCuentasAsistentes',$TEvento->id)}}" class="btn btn-primary btn-sm">Enviar Cuentas a Asistentes</a>
-        
+
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModaevento">cerrar Evento </button>
+            
+
+@if($TEvento->cerrado ==1)
             <div class="page-header">
                 <legend><h1 id="navbar">Cuentas</h1></legend>
             </div>
@@ -428,13 +440,16 @@
                     </div>
                 </div>
             </div>
+@endif
     @endif          
             <div class="page-header">
                 <legend><h1 id="navbar">Lista de Compras</h1></legend>
             </div>
 
             <!-- pop up de agregar item -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalItem">Agregar Item </button>
+            @if(Session::get('usuario_id')==$TEvento->creador)
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalItem">Agregar Item </button>
+            @endif
             <div id="myModalItem" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -572,7 +587,11 @@
 
                                 <?php $NomUser=Usuario::find($elementOK->idusuario)?>
                                 <div>
-                                <button class="btn btn-info"><span class="badge" >{{$elementOK->cantidad}} </span>{{$NomUser->username}} <a href="" class="close" data-toggle="modal" data-target="#EliminarItem" onclick="AsignaIdItem3({{$elementOK->id}},'{{$item->nombre}}')">x</a></button>
+                                <button class="btn btn-info"><span class="badge" >{{$elementOK->cantidad}} </span>{{$NomUser->username}} 
+                                @if(Session::get('usuario_id')==$NomUser->id || Session::get('usuario_id')== $TEvento->creador)
+                                <a href="" class="close" data-toggle="modal" data-target="#EliminarItem" onclick="AsignaIdItem3({{$elementOK->id}},'{{$item->nombre}}')">x</a>
+                                @endif
+                                </button>
                                 </div>
                                 
                                 <?php $contador=$contador+($elementOK->cantidad)?>                               
@@ -581,8 +600,13 @@
                         @endforeach </td>
                         <td>{{$contador}}/{{$item->cantidad}}</td>
                         <td>{{($item->cantidad)-$contador}}</td>
-                        <td><a href="" data-toggle="modal" data-target="#myModalLlevarItem" onclick="AsignaIdItem({{$item->id}},'{{$item->nombre}}')">yo llevo!</a><a href="" data-toggle="modal" data-target="#myModalasignarItem" onclick="AsignaIdItem2({{$item->id}},'{{$item->nombre}}')"> asignar</a> <a href="{{ url('/Evento/destroy',$item->id) }}" class="btn btn-danger" >
-                        <span class="glyphicon glyphicon-trash"></span></a></td>                        
+                        <td><a href="" data-toggle="modal" data-target="#myModalLlevarItem" onclick="AsignaIdItem({{$item->id}},'{{$item->nombre}}')">yo llevo!</a>
+                        @if(Session::get('usuario_id')==$TEvento->creador)
+                         <a href="" data-toggle="modal" data-target="#myModalasignarItem" onclick="AsignaIdItem2({{$item->id}},'{{$item->nombre}}')"> asignar</a>
+                         <a href="{{ url('/Evento/destroy',$item->id) }}" class="btn btn-danger" >
+                        <span class="glyphicon glyphicon-trash"></span></a>
+                        @endif
+                        </td>                        
                     </tr>
                     @endforeach
                 </tbody>
@@ -617,6 +641,31 @@
                 </div>
             </div>
             <!-- Fin de PopUp de Aceptar item-->
+            <!-- popup cerrar evento-->
+            <div id="myModaevento" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            {{Form::open(array('method' => 'POST', 'class'=>'form-horizontal', 'action' =>'EventoController@CerrarEvento' , 'role' => 'form'))}}
+                                <fieldset>
+                                    <legend>Cerrar Evento</legend>
+                                    <div class="form-group" >
+                                      <label class="col-lg-2 control-label">Seguro que quiere cerrar el evento</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <div class="col-lg-10 col-lg-offset-2">
+                                      {{form::input('hidden','ideventoN',$TEvento->id)}}
+                                        <p>{{Form::submit('Enviar', array('class' => 'btn btn-default'))}}</p>
+                                      </div>
+                                    </div>
+                                </fieldset>
+                            {{Form::close()}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- fin popup cerrar evento-->
 
                 <div class="page-header">
                 <legend><h1 id="navbar">Fotos del Evento</h1></legend>
@@ -632,7 +681,7 @@
                 <div class="thumbnail">
                 
                     <div class="panel-body">
-                        <img src="{{$Foto->photo}}" alt="{{$Foto->titulo}}" height='100' width='100'> 
+                        <a href="{{$Foto->photo}}"><img src="{{$Foto->photo}}" alt="{{$Foto->titulo}}" title="{{$Foto->titulo}}" height='100' width='100'> </a>
                     </div>
                 
                 </div>
@@ -661,7 +710,7 @@
 
     
 
-    
+ @endif 
 </body>
     <div id="footer">
         <!-- FOOTER -->

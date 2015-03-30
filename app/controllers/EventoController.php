@@ -361,7 +361,11 @@ class EventoController extends BaseController {
 	public function Modificar()
 	{
 		$idevento=Input::get('ideventoN');
+		if($idevento)
+		{
 		return View::make('eventos.Modificar',array('idevento'=>$idevento));
+		}
+		return View::make('home');
 	}
 	public function Editando()
 	{	
@@ -381,6 +385,15 @@ class EventoController extends BaseController {
 			$NEvento-> save();
 		return Redirect::to("/Evento/$idevento");
 
+	}
+
+	public function CerrarEvento()
+	{	
+		$idevento=Input::get('ideventoN');
+		$EventoM=Evento::find($idevento);
+		$EventoM->cerrado=1;
+		$EventoM->save();
+		return Redirect::to("/Evento/$idevento");
 	}
 
 }

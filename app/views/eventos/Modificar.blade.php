@@ -13,6 +13,8 @@
 	</script>
 </head>
 	@section('content')
+	<?php $Tevento=Evento::find($idevento);?> 
+@if((Session::get('usuario_id')==$Tevento->creador ))
 		<div class="page-header">
 		    <div class="container" id="page">
 		    	<h1>Editar Evento</h1>
@@ -116,4 +118,5 @@
 		</fieldset>	
 {{Form::close()}}
 </div>
+@endif
 @stop
